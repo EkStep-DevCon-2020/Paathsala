@@ -21,7 +21,7 @@
           <span>{{collectionData?.class || collectionData?.gradeLevel}}</span>
         </div>
       </div>
-      <div class="d-flex flex-ai-end flex-w-wrap content-header__buttons" *ngIf="collectionData">
+      <!-- <div class="d-flex flex-ai-end flex-w-wrap content-header__buttons" *ngIf="collectionData">
         <button class="sb-btn sb-btn-outline-secondary sb-btn-normal mr-8" *ngIf="isConnected && (checkStatus('DOWNLOADED') || !isBrowse()) && showUpdate" (click)="updateCollection(collectionData)">{{resourceService?.frmelmnts?.lbl?.desktop?.updateTextbook}}</button>
         <button class="sb-btn sb-btn-outline-primary sb-btn-normal mr-8" [disabled]="disableDelete" *ngIf="checkStatus('DOWNLOADED') || !isBrowse()" (click)="logTelemetry('confirm-delete-collection'); showDeleteModal = !showDeleteModal;">{{resourceService?.frmelmnts?.lbl?.desktop?.deleteBook}}</button>
         <button type="button" class="sb-btn sb-btn-primary sb-btn-normal mr-8" *ngIf="checkStatus('DOWNLOADED') || !isBrowse()" (click)="exportCollection(collectionData)">{{resourceService?.frmelmnts?.lbl?.saveToPenDrive}}</button>
@@ -32,7 +32,7 @@
         <button *ngIf="checkStatus('PAUSED')" class="sb-btn sb-btn-normal sb-btn-link-primary cursor-default disable">
           {{resourceService.frmelmnts?.lbl?.downloadingPaused}}
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
