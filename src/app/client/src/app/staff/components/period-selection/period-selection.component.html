@@ -1,7 +1,7 @@
 <br>
 <div class='app'>
 
-  <div class='app-calendar' *ngIf="calendarVisible">
+  <div class='app-calendar'>
     <full-calendar
       #calendar
       defaultView="dayGridMonth"
@@ -15,7 +15,7 @@
       [plugins]="calendarPlugins"
       [weekends]="calendarWeekends"
       [events]="calendarEvents"
-      (dateClick)="handleDateClick($event)"
+      (eventClick)="handleEventClick($event)"
     ></full-calendar>
   </div>
 

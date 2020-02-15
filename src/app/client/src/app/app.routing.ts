@@ -6,6 +6,9 @@ const appRoutes: Routes = [
     path: 'staff', loadChildren: 'app/staff/staff.module#StaffModule'
   },
   {
+    path: 'play', loadChildren: 'app/content-consumption/content-consumption.module#ContentConsumptionModule'
+  },
+  {
     path: '', loadChildren: 'app/modules/public/public.module#PublicModule'
   },
   {

@@ -4,6 +4,7 @@ import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-period-selection',
@@ -14,39 +15,20 @@ export class PeriodSelectionComponent implements OnInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
 
-  calendarVisible = true;
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
-  calendarWeekends = true;
   calendarEvents: EventInput[] = [
-    { title: 'Maths', start: '2020-02-14T09:00:00', end: '2020-02-14T10:00:00' },
-    { title: 'Science', start: '2020-02-14T10:00:00', end: '2020-02-14T11:00:00' },
-    { title: 'English', start: '2020-02-14T11:00:00', end: '2020-02-14T12:00:00' },
-    { title: 'DIKSHA Time', start: '2020-02-14T12:00:00', end: '2020-02-14T13:00:00' }
+    { title: 'Maths - Class 8', start: '2020-02-14T09:00:00', end: '2020-02-14T10:00:00', id: "do_11287198635947622412" },
+    { title: 'Science - Class 8', start: '2020-02-14T10:00:00', end: '2020-02-14T11:00:00', id: "do_11287198635947622412"  },
+    { title: 'English - Class 8', start: '2020-02-14T11:00:00', end: '2020-02-14T12:00:00', id: "do_11287198635947622412"  },
+    { title: 'DIKSHA Time', start: '2020-02-14T12:00:00', end: '2020-02-14T13:00:00', id: "do_11287198635947622412"  }
   ];
-
-  toggleVisible() {
-    this.calendarVisible = !this.calendarVisible;
-  }
-
-  toggleWeekends() {
-    this.calendarWeekends = !this.calendarWeekends;
-  }
-
-  gotoPast() {
-    let calendarApi = this.calendarComponent.getApi();
-    calendarApi.gotoDate('2000-01-01'); // call a method on the Calendar object
-  }
+  constructor( public router: Router){ }
   ngOnInit() {
   }
 
-  handleDateClick(arg) {
-    if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-      this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-        title: 'New Event',
-        start: arg.date,
-        allDay: arg.allDay
-      })
-    }
+  handleEventClick(arg) {
+    console.log(arg.event.id, arg.event.title);
+    this.router.navigate(['play/collection/' + arg.event.id]);
   }
 
 }
