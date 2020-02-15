@@ -160,23 +160,6 @@ export class ContentPlayerComponent implements AfterViewInit, OnChanges, OnInit,
    * Emits event when content starts playing and end event when content was played/read completely
    */
   loadPlayer() {
-    const downloadStatus = _.has(this.playerConfig, 'metadata.desktopAppMetadata') ?
-    !_.has(this.playerConfig, 'metadata.desktopAppMetadata.isAvailable') ||
-    _.get(this.contentData, 'desktopAppMetadata.isAvailable') : false;
-
-    if (_.includes(this.router.url, 'browse') && !downloadStatus) {
-      this.loadDefaultPlayer(`${this.configService.appConfig.PLAYER_CONFIG.localBaseUrl}webview=true`);
-      return;
-    } else if (!_.includes(this.router.url, 'browse') || downloadStatus) {
-      this.playerConfig.data = '';
-      if (_.get(this.playerConfig, 'metadata.artifactUrl')
-        && _.includes(OFFLINE_ARTIFACT_MIME_TYPES, this.playerConfig.metadata.mimeType)) {
-        const artifactFileName = this.playerConfig.metadata.artifactUrl.split('/');
-        this.playerConfig.metadata.artifactUrl = artifactFileName[artifactFileName.length - 1];
-      }
-      this.loadDefaultPlayer(this.configService.appConfig.PLAYER_CONFIG.localBaseUrl);
-      return;
-    }
 
     if (this.previewCdnUrl !== '' && (this.isCdnWorking).toLowerCase() === 'yes') {
       this.loadCdnPlayer();
