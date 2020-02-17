@@ -1,4 +1,25 @@
-<p>
-  profile-selection works!
-</p>
+<div class="staff-list">
+  <section class="header">
+    <div class="brand">
+      <img src="../../../assets/images/logo.jpg" alt="" title="" width="180"/>
+    </div>
+  </section>
 
+  <div class="staff-grid">
+    <section class="staff-grid-item" [ngClass]="{'selected': teacher.selected}"
+             *ngFor="let teacher of teacherList"
+             (click)="toogleSelected(teacher)" #item>
+      <div class="section-in-area">
+        <div class="img-container">
+          <img [src]="teacher.image" #profilePic>
+        </div>
+        <h4>{{teacher.name}}</h4>
+        <div class="subjects-section">
+                    <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
+                        {{sub}}
+                    </span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
