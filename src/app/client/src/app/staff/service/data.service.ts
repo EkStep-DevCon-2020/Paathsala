@@ -13,4 +13,7 @@ export class DataService {
     return this.httpClient.get(url,options);
   }
 
+  public post(url, body, httpOptions){
+    return this.httpClient.post(url, body, httpOptions);
+  }
 }
