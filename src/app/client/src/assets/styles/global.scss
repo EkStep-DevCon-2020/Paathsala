@@ -243,3 +243,12 @@ app-workspace {
     }
   }
 }
+.fc-time-grid .fc-slats .fc-minor td {
+  border-top-style: unset !important;
+}
+.fc-event, .fc-event-dot {
+  background: red;
+}
+.fc-unthemed td.fc-today {
+  background: #7c7b7b;
+}
