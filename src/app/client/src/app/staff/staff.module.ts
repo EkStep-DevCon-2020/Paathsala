@@ -8,9 +8,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { PeriodSelectionComponent } from './components/period-selection/period-selection.component'; // for FullCalendar!
 import { DataService } from './service/data.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [ProfileSelectionComponent, PeriodSelectionComponent],
+  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent],
   imports: [
     CommonModule,
     HttpClientModule,
