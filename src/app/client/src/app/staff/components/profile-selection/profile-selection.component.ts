@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../service/data.service';
 import {Router} from '@angular/router';
-import {SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, CARD_ANIMATION, APPEAR_SIDE} from 'src/app/theme/app-animations';
+import {SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, CARD_ANIMATION, APPEAR_SIDE} from '../../../theme/app-animations';
 
 @Component({
   selector: 'app-profile-selection',
@@ -20,7 +20,7 @@ export class ProfileSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getData('https://api.myjson.com/bins/g00e4').subscribe(
+    this.dataService.getData('https://api.myjson.com/bins/zyhd0').subscribe(
       data => {
         console.log(data);
         this.teacherList = data;

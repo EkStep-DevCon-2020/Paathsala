@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, CARD_ANIMATION, APPEAR_SIDE} from 'src/app/theme/app-animations';
+import {SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, CARD_ANIMATION, APPEAR_SIDE} from '../../../theme/app-animations';
 
 @Component({
   selector: 'app-dashboard',

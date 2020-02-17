@@ -1,0 +1,83 @@
+@import './variables';
+@import './mixins/mixins';
+
+.st-dashboard {
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(1, 0, 53, 1),
+    rgba(18, 39, 159, 0)
+  );
+}
+
+
+.dashboard-grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  color: #444;
+  justify-items: stretch;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  height: calc(100vh - 5rem);
+  padding: 1rem 2rem 2rem;
+}
+
+.grid-item {
+  border: 0.0625rem solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border-radius: 0.125rem;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  grid-column: auto;
+  grid-row: auto;
+  &:last-of-type{
+    margin-bottom:1rem;
+  }
+  &--selected {
+    border-image: linear-gradient(to right, red, purple);
+    border-image-slice: 1;
+    border-width: 2px;
+  }
+  .section-in-area {
+    h4 {
+      padding: 0.75rem 1rem;
+      font-size: 1.25rem;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .content {
+      padding: 0.75rem 1rem;
+    }
+  }
+}
+
+@include respond-above(md) {
+  .dashboard-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .grid-item{
+    &:last-of-type{
+      margin-bottom:0;
+    }
+  }
+  .attendence {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+  }
+  .empty {
+  }
+  .leaderboard {
+    grid-column: 4;
+    grid-row: 1 / span 3;
+  }
+  .assessment {
+    grid-column: 3;
+    grid-row: 2 / span 3;
+  }
+  .timetable {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+  }
+}

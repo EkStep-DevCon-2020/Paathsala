@@ -1,12 +1,13 @@
-<app-teacher-side-menu></app-teacher-side-menu>
+<app-side-menu></app-side-menu>
 <div class="staff-list">
   <section class="header">
     <div class="brand">
       <img src="../../../assets/images/logo.jpg" alt="" title="" width="180"/>
     </div>
+    <div class="page-title">Staff Room</div>
   </section>
 
-  <div class="staff-grid scroll" [@cardAnimation]="teacherList.length">
+  <div class="staff-grid scroll" [@cardAnimation]="teacherList?.length">
     <section class="staff-grid-item" [ngClass]="{'selected': teacher.selected}"
              *ngFor="let teacher of teacherList"
              (click)="toogleSelected(teacher)" #item>
