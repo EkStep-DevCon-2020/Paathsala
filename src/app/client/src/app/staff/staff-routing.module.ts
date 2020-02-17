@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ProfileSelectionComponent, PeriodSelectionComponent} from './components';
+import {ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent} from './components';
 
 const routes: Routes = [
   {path: 'profile/selection', component: ProfileSelectionComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'period/selection/:id', component: PeriodSelectionComponent, pathMatch: 'full'}
 ];
 
