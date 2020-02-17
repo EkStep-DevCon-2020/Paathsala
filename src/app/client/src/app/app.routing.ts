@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ErrorPageComponent, AuthGuard } from '@sunbird/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
+
 const appRoutes: Routes = [
+  {
+    path: "profile-summary", component: ProfileSummaryComponent,
+  },
   {
     path: 'staff', loadChildren: 'app/staff/staff.module#StaffModule'
   },
