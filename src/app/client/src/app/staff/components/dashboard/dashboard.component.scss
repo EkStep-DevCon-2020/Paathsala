@@ -3,11 +3,7 @@
 
 .st-dashboard {
   width: 100%;
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(1, 0, 53, 1),
-    rgba(18, 39, 159, 0)
-  );
+  background-image: var(--page-layer-bg);
 }
 
 

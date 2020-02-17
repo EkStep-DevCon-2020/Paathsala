@@ -13,8 +13,8 @@ html {
 body {
   min-height: 100%;
   font-family: var(--font-stack-en);
-  background-color: #000;
-  background: url("../images/bg.jpg") no-repeat center !important;
+  background-color: var(--devcon-bg);
+  background: var(--devcon-bg-img) no-repeat center !important;
   background-size: cover;
   background-repeat: repeat-y;
 }
@@ -76,7 +76,7 @@ section {
   }
   .page-title {
     font-size:1rem;
-    color:var( --devcon-secondary-color);
+    color: var(--devcon-secondary-color);
     text-transform: uppercase;
     letter-spacing: 0.25rem;
     margin:0px 1.5rem;
@@ -223,7 +223,7 @@ nav {
   padding: 2rem;
   padding-top: 5rem;
 
-  background:var( --devcon-secondary-color);
+  background: var(--devcon-secondary-color);
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */

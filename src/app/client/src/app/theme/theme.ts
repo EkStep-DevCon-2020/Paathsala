@@ -7,7 +7,10 @@ export const light: Theme = {
     name: 'light',
     properties: {
         '--devcon-primary-color': '#010035',
-        ' --devcon-secondary-color': '#f6c648',
+        '--devcon-secondary-color': '#f6c648',
+        '--devcon-bg-img': 'url("./assets/images/bgsdf.jpg")',
+        '--devcon-bg' : '#fff',
+        '--page-layer-bg' : "linear-gradient(to bottom right,rgba(255, 255, 255, 1),rgba(255, 255, 255, 1))",
         '--foreground-default': '#08090A',
         '--foreground-secondary': '#41474D',
         '--foreground-tertiary': '#797C80',
@@ -35,7 +38,10 @@ export const dark: Theme = {
     name: 'dark',
     properties: {
         '--devcon-primary-color': '#f6c648',
-        ' --devcon-secondary-color': '#010035',
+        '--devcon-secondary-color': '#010035',
+        '--devcon-bg-img': 'url("./assets/images/bg.jpg")',
+        '--devcon-bg' : '#000',
+        '--page-layer-bg' : "linear-gradient(to bottom right,rgba(1, 0, 53, 1),rgba(18, 39, 159, 0))",
         '--foreground-default': '#5C7D99',
         '--foreground-secondary': '#A3B9CC',
         '--foreground-tertiary': '#F4FAFF',

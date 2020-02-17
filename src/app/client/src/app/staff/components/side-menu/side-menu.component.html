@@ -21,8 +21,8 @@
           
     <ul id="menu">
         <li>
-          <h1> Switch Theme : Light </h1>
-          <input type="checkbox" name="" class="themeToggle">
+          <h6> Switch Theme : {{themeService.getActiveTheme().name}} </h6>
+          <input type="checkbox" name="" class="themeToggle" (click)="toggleTheme()">
         </li>
       <li>
         <a
