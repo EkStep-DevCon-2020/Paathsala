@@ -9,9 +9,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { PeriodSelectionComponent } from './components/period-selection/period-selection.component'; // for FullCalendar!
 import { DataService } from './service/data.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 @NgModule({
-  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent],
+  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent],
   imports: [
     CommonModule,
     HttpClientModule,

@@ -1,3 +1,85 @@
-<p>
-  dashboard works!
-</p>
+<app-side-menu></app-side-menu>
+<div class="st-dashboard">
+  <section class="header">
+    <div class="brand">
+      <img src="../../../assets/images/logo.jpg" alt="" title="" width="180" />
+    </div>
+    <div class="page-title">Class Room</div>
+    <!-- <div class="nav">
+      <ul>
+        <li>
+          <a href="#" class="active" title="Class Room" tabindex="0">Class Room</a>
+        </li>
+        <li><a href="#" title="Staff Room" tabindex="0">Staff Room</a></li>
+      </ul>
+    </div> -->
+  </section>
+  <div class="dashboard-grid scroll" >
+    <section class="grid-item attendence" [@appearSide]>
+      <div class="section-in-area">
+        <h4>Attendence</h4>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
+          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
+          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
+          reprehenderit ea molestias.
+        </div>
+      </div>
+    </section>
+    <section class="grid-item empty" [@appearDown]>
+      <div class="section-in-area">
+        <h4>Empty</h4>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
+          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
+          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
+          reprehenderit ea molestias.
+        </div>
+      </div>
+    </section>
+    <section class="grid-item grid-item--selected leaderboard" [@appearDown]>
+      <div class="section-in-area">
+        <h4>Leaderboard</h4>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
+          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
+          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
+          reprehenderit ea molestias.
+        </div>
+      </div>
+    </section>
+    <section class="grid-item assessment" [@appearSide]>
+      <div class="section-in-area">
+        <h4>Time Table</h4>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
+          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
+          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
+          reprehenderit ea molestias.
+        </div>
+      </div>
+    </section>
+    <section class="grid-item timetable" [@appearDown]>
+      <div class="section-in-area">
+        <h4>Assessment</h4>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
+          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
+          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
+          reprehenderit ea molestias.
+        </div>
+      </div>
+    </section>
+    <section class="grid-item upcoming" [@appearDown]>
+      <div class="section-in-area">
+        <h4>Next Class</h4>
+        <div class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
+          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
+          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
+          reprehenderit ea molestias.
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
