@@ -1,17 +1,19 @@
+<app-side-menu></app-side-menu>
 <div class="staff-list">
   <section class="header">
     <div class="brand">
       <img src="../../../assets/images/logo.jpg" alt="" title="" width="180"/>
     </div>
+    <div class="page-title">Staff Room</div>
   </section>
 
-  <div class="staff-grid">
+  <div class="staff-grid scroll" [@cardAnimation]="teacherList?.length">
     <section class="staff-grid-item" [ngClass]="{'selected': teacher.selected}"
              *ngFor="let teacher of teacherList"
              (click)="toogleSelected(teacher)" #item>
       <div class="section-in-area">
         <div class="img-container">
-          <img [src]="teacher.avatar" #profilePic>
+          <img [src]="teacher.avatar" (error)="profilePic.src = defaultProfileImg" #profilePic>
         </div>
         <h4>{{teacher.name}}</h4>
         <div class="subjects-section">
