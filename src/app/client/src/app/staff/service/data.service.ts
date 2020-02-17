@@ -9,8 +9,8 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getData(url: any): Observable < any > {
-    return this.httpClient.get(url);
+  public getData(url: any, options = {}): Observable < any > {
+    return this.httpClient.get(url,options);
   }
 
 }

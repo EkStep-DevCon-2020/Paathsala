@@ -6,6 +6,9 @@ import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import {DataService} from '../../service/data.service';
+import { map } from 'rxjs/operators';
+
 const year = (new Date()).getFullYear();
 const ClassMap =  {
   "01" : "Class 1",
@@ -29,10 +32,11 @@ export class PeriodSelectionComponent implements OnInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarEvents: EventInput[] = [];
-  constructor(public router: Router){ }
+  constructor(public router: Router, private dataService: DataService){ }
   ngOnInit() {
     this.getTeacherTimeTable().subscribe(data => {
-      this.calendarEvents = data.timeTable.map((row) => {
+      console.log(data);
+      this.calendarEvents = data.periods.map((row) => {
         const sessionIdArray = row.sessionId.match(/.{1,2}/g);
         const sessionIdMap = {
           class: sessionIdArray[0],
@@ -48,19 +52,29 @@ export class PeriodSelectionComponent implements OnInit {
         }
         return event;
       })
+    }, error => {
+      console.log('getTeacherTimeTable error', error);
     });
     console.log(this.calendarEvents);
   }
   getTeacherTimeTable(id = 123){
-    return of({
-      timeTable: [
-        { subject: 'Maths', textBookId: "do_11287198635947622412",  sessionId: "09021710"},
-        { subject: 'Science', textBookId: "do_11287198635947622412",  sessionId: "09021711"},
-        { subject: 'English', textBookId: "do_11287198635947622412",  sessionId: "09021712"},
-        { subject: 'Hindi', textBookId: "do_11287198635947622412",  sessionId: "09021713"},
-        { subject: 'Social', textBookId: "do_11287198635947622412",  sessionId: "09021714"},
-      ]
-    })
+    return this.dataService.getData('https://devcon.sunbirded.org/api/teacher/v3/read/TCHAnoop1', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
+      }
+    }).pipe(map(response => {
+      return response.result.teacher;
+    }))
+    // return of({
+    //   timeTable: [
+    //     { subject: 'Maths', textBookId: "do_11287198635947622412",  sessionId: "09021710"},
+    //     { subject: 'Science', textBookId: "do_11287198635947622412",  sessionId: "09021711"},
+    //     { subject: 'English', textBookId: "do_11287198635947622412",  sessionId: "09021712"},
+    //     { subject: 'Hindi', textBookId: "do_11287198635947622412",  sessionId: "09021713"},
+    //     { subject: 'Social', textBookId: "do_11287198635947622412",  sessionId: "09021714"},
+    //   ]
+    // })
   }
   handleEventClick(arg) {
     console.log(arg.event.id, arg.event.title);
