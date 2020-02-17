@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { FullCalendarComponent } from '@fullcalendar/angular';
-import { EventInput } from '@fullcalendar/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
+import {FullCalendarComponent} from '@fullcalendar/angular';
+import {EventInput} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
@@ -27,10 +27,9 @@ const ClassMap =  {
 export class PeriodSelectionComponent implements OnInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
-
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarEvents: EventInput[] = [];
-  constructor( public router: Router){ }
+  constructor(public router: Router){ }
   ngOnInit() {
     this.getTeacherTimeTable().subscribe(data => {
       this.calendarEvents = data.timeTable.map((row) => {
