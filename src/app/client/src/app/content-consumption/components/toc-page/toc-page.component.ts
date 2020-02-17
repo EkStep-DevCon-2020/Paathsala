@@ -107,7 +107,8 @@ export class TocPageComponent implements OnInit, OnDestroy {
           this.queryParams = { ...queryParams};
         });
       }, (error) => {
-        this.router.navigate(['/']);
+        // this.router.navigate(['/']);
+        console.error('got error while fetching CollectionHierarchy', error );
       });
   }
 
