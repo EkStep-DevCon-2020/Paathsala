@@ -10,7 +10,10 @@ import {
   ICollectionTreeOptions, NavigationHelperService, ResourceService,  ExternalUrlPreviewService, ConfigService,
   ContentUtilsServiceService, UtilService, OfflineCardService
 } from '@sunbird/shared';
+import { ConfigService as config } from '../../../config/config.service';
 import { CollectionHierarchyAPI } from '@sunbird/core';
+import {DataService} from '../../../staff/service/data.service';
+
 import * as _ from 'lodash-es';
 @Component({
   selector: 'app-toc-page',
@@ -71,7 +74,7 @@ export class TocPageComponent implements OnInit, OnDestroy {
   contentDeleted;
   isContentPresent = true;
   telemetryImpression: IImpressionEventInput;
-  constructor(public playerService: PublicPlayerService, private configService: ConfigService, public activatedRoute: ActivatedRoute,
+  constructor(private dataService: DataService,public playerService: PublicPlayerService, private sharedConfig: ConfigService, private configService: config, public activatedRoute: ActivatedRoute,
     public router: Router, public resourceService: ResourceService, private contentUtilsService: ContentUtilsServiceService,
     public externalUrlPreviewService: ExternalUrlPreviewService,
     private utilService: UtilService,
@@ -79,18 +82,52 @@ export class TocPageComponent implements OnInit, OnDestroy {
     private navigationHelperService: NavigationHelperService,
     private deviceDetectorService: DeviceDetectorService,
     private offlineCardService: OfflineCardService,
-    private telemetryService: TelemetryService) { }
+    private telemetryService: TelemetryService) { 
+      if(!this.configService.userInfo){
+        this.router.navigate(['']);
+      }
+      console.log('this.configService.userInfo', this.configService.userInfo, this.configService.teacherInfo);
+    }
 
   ngOnInit() {
     this.utilService.emitHideHeaderTabsEvent(true);
     this.contentType = _.get(this.activatedRoute, 'snapshot.queryParams.contentType');
     this.dialCode = _.get(this.activatedRoute, 'snapshot.queryParams.dialCode');
     this.getContent();
+    this.saveSessionWithUser();
     this.router.events
     .pipe(filter((event) => event instanceof NavigationStart), takeUntil(this.unsubscribe$))
     .subscribe(x => {this.setPageExitTelemtry(); });
   }
-
+  saveSessionWithUser(){
+    const body = {
+      "request": {
+        "teacher": {
+          "userId": this.configService.userInfo.code,
+          "userDetails": {
+            teacherId: this.configService.teacherInfo.identifier,
+            subject: this.configService.teacherInfo.subject,
+            name: this.configService.userInfo.name,
+            avatar: this.configService.userInfo.photo,
+            sessionId: this.configService.sessionId,
+          }
+        }
+      }
+    };
+    this.dataService.post('https://devcon.sunbirded.org/api/teacher/v3/user/profile', body, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
+      }
+    })
+    .subscribe((data: any) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   checkDownloadStatus(downloadListdata) {
     this.collectionData = this.playerService.updateDownloadStatus(downloadListdata, this.collectionData);
   }
@@ -113,7 +150,7 @@ export class TocPageComponent implements OnInit, OnDestroy {
   }
 
   private getCollectionHierarchy(collectionId: string): Observable<{ data: CollectionHierarchyAPI.Content }> {
-    const inputParams = {params: this.configService.appConfig.CourseConsumption.contentApiQueryParams};
+    const inputParams = {params: this.sharedConfig.appConfig.CourseConsumption.contentApiQueryParams};
     return this.playerService.getCollectionHierarchy(collectionId, inputParams).pipe(
       map((response) => {
         this.collectionData = _.get(response, 'result.content');

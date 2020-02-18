@@ -9,6 +9,8 @@ import * as _ from 'lodash-es';
 })
 export class ConfigService {
   userInfo: any;
+  teacherInfo: any;
+  sessionId = '';
   //  = {
   //   "osUpdatedAt": "2020-02-18T12:54:26.279Z",
   //   "code": "VIS6",
