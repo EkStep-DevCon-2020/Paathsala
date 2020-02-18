@@ -133,7 +133,7 @@ nav {
 
 #menuToggle a {
   text-decoration: none;
-  color: #232323;
+  color: var( --devcon-primary-color);
   padding: 1rem;
   letter-spacing: 0.25rem;
   border-bottom:1px solid #c38f06;
@@ -230,6 +230,7 @@ nav {
   padding-top: 5rem;
 
   background: var(--devcon-secondary-color);
+  color: var(--devcon-primary-color);
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
