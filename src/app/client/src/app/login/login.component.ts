@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   captureImage = false;
   qrCode = false;
   image: string;
+  enteredQrCode: any;
   constraints = {
     video: {
       facingMode: 'environment',
@@ -44,7 +45,17 @@ export class LoginComponent implements OnInit {
       ideaId: IDEA_ID
     });
   }
-
+  handleQRCode(){
+    this.configService.userInfo = {
+      "osUpdatedAt": "2020-02-18T12:54:26.279Z",
+      "code": "000000",
+      "osCreatedAt": "2020-02-18T12:54:26.279Z",
+      "name": "Demo user",
+      "photo": "https://vignette.wikia.nocookie.net/jamescameronsavatar/images/5/5c/Avatar_Logo_revised.png/revision/latest?cb=20100207200600",
+      "osid": "1-63c8bfe5-e5ca-4f3b-bb1a-46ac41f3b917"
+    };
+    this.openSuccessModal = true;
+  }
   startCamera() {
     this.openErrorModal = false;
     if (!!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
@@ -125,7 +136,9 @@ export class LoginComponent implements OnInit {
     });
   }
   navigate() {
-    (this.canvas.nativeElement.getContext('2d')).clearRect(0, 0, this.canvas.nativeElement.height, this.canvas.nativeElement.width);
+    if(this.canvas && this.canvas.nativeElement){
+      (this.canvas.nativeElement.getContext('2d')).clearRect(0, 0, this.canvas.nativeElement.height, this.canvas.nativeElement.width);
+    }
     this.router.navigate(["staff/profile/selection"]);
   }
   closeModal() {

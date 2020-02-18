@@ -19,6 +19,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { PluginModules } from './framework.config';
 import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LoginComponent } from './login/login.component';
     DeviceDetectorModule.forRoot(),
     SharedFeatureModule,
     ...PluginModules,
+    FormsModule,
     AppRoutingModule // don't add any module below this because it contains wildcard route
   ],
   entryComponents: [AppComponent],
