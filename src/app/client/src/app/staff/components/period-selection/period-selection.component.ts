@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import {DataService} from '../../service/data.service';
 import { map } from 'rxjs/operators';
+import { ConfigService } from '../../../config/config.service';
 
 const year = (new Date()).getFullYear();
 const ClassMap =  {
@@ -33,11 +34,16 @@ export class PeriodSelectionComponent implements OnInit {
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarEvents: EventInput[] = [];
   profileInfo = {};
-  constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService){ }
+  constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService, public configService: ConfigService){ 
+    if(!this.configService.userInfo){
+      this.router.navigate(['']);
+    }
+  }
   ngOnInit() {
     this.getTeacherTimeTable(this.activatedRoute.snapshot.params.id).subscribe(data => {
       console.log(data);
       this.profileInfo = data;
+      this.configService.teacherInfo = data;
       this.calendarEvents = data.periods.map((row) => {
         const sessionIdArray = row.sessionId.match(/.{1,2}/g);
         const sessionIdMap = {
@@ -50,7 +56,8 @@ export class PeriodSelectionComponent implements OnInit {
           title: `${row.subject} - ${ClassMap[sessionIdMap.class]}`,
           start: new Date(year, sessionIdMap.month - 1, sessionIdMap.day, sessionIdMap.hour),
           end: new Date(year, sessionIdMap.month - 1, sessionIdMap.day, sessionIdMap.hour + 1),
-          id: row.textBookId
+          id: row.textBookId, 
+          sessionId: row.sessionId
         }
         return event;
       })
@@ -70,7 +77,8 @@ export class PeriodSelectionComponent implements OnInit {
     }));
   }
   handleEventClick(arg) {
-    console.log(arg.event.id, arg.event.title);
+    this.configService.sessionId = arg.event.extendedProps.sessionId;
+    console.log(arg.event.id, arg.event.title, arg.event.extendedProps.sessionId);
     this.router.navigate(['play/collection/' + arg.event.id]);
   }
 

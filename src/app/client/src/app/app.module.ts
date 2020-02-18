@@ -18,10 +18,13 @@ import { CacheSessionStorage } from 'ng2-cache-service/dist/src/services/storage
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { PluginModules } from './framework.config';
 import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
+import { LoginComponent } from './login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileSummaryComponent
+    ProfileSummaryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserAnimationsModule, // used this instaed of browser module since it includes in it.
