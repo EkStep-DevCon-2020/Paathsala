@@ -3,9 +3,6 @@
 
 .st-dashboard {
   width: 100%;
-  // background-image: linear-gradient(to bottom right,
-  //     rgba(1, 0, 53, 1),
-  //     rgba(18, 39, 159, 0));
   background-image: linear-gradient(to bottom right, #010035, rgb(5, 16, 77));
 }
 
@@ -120,10 +117,22 @@
       .leaderboard-content {
         margin: 0.5rem 0;
 
+        .card-leaderboard-content.first {
+          background: #4C69FB;
+        }
+
+        .card-leaderboard-content.second{
+          background: #38CDEC;
+        }
+
+        .card-leaderboard-content.third{
+          background: #318DF5;
+        }
+
         .card-leaderboard-content {
           display: flex;
           z-index: 1;
-          background: #38CDEC;
+          background: #f2f2f2;
           box-shadow: 0px 3px 6px #00000029;
           border-radius: 10px;
           padding: 12px;
@@ -134,11 +143,24 @@
           // max-width: 394px;
 
           .leaderboard-serial-content {
+
+            .serial-no-content.first{
+              background: #3654eb;
+            }
+
+            .serial-no-content.second{
+              background: #4cb1e0;
+            }
+
+            .serial-no-content.third{
+              background: #1b7be7;
+            }
+
             .serial-no-content {
               width: 48px;
               height: 48px;
               border-radius: 48px;
-              background: #4cb1e0;
+              background: #c8c2c2;
               color: #fff;
 
               .serial-no-text {
