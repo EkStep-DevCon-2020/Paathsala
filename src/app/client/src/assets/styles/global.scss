@@ -243,3 +243,23 @@ app-workspace {
     }
   }
 }
+.fc-button-primary:not(:disabled):active, .fc-button-primary:not(:disabled).fc-button-active {
+  background: var( --devcon-primary-color) !important;
+  color: var( --devcon-secondary-color) !important;
+}
+.fc-time-grid .fc-slats .fc-minor td {
+  border-top-style: unset !important;
+}
+.fc-event, .fc-event-dot {
+  background: var( --devcon-secondary-color);
+  color: white !important;
+}
+.fc-time-grid .fc-slats td {
+  height: 2.5em;
+}
+.fc-time-grid-event .fc-content {
+  text-align: center;
+}
+//.fc-unthemed td.fc-today {
+  //background: #7c7b7b;
+//}

@@ -1,4 +1,5 @@
 <app-side-menu></app-side-menu>
+
 <div class="staff-list">
   <section class="header">
     <div class="brand">
@@ -28,12 +29,12 @@
     </div>
     <div class="nine wide column sb-bg-color-white">
       <section>
-        <full-calendar #calendar defaultView="timeGridWeek" maxTime="19:00:00" minTime="07:00:00" [header]="{
+        <full-calendar #calendar defaultView="timeGridWeek" maxTime="16:00:00" minTime="09:00:00" [header]="{
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          right: 'timeGridWeek,timeGridDay'
         }" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents"
-          (eventClick)="handleEventClick($event)"></full-calendar>
+          (eventClick)="handleEventClick($event)" [hiddenDays]="[0]"></full-calendar>
       </section>
     </div>
 
