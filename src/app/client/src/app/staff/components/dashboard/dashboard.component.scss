@@ -3,7 +3,9 @@
 
 .st-dashboard {
   width: 100%;
-  background-image: var(--page-layer-bg);
+  background-image: linear-gradient(to bottom right,
+      rgba(1, 0, 53, 1),
+      rgba(18, 39, 159, 0));
 }
 
 
@@ -23,57 +25,355 @@
 .grid-item {
   border: 0.0625rem solid rgba(255, 255, 255, 0.2);
   color: var(--white);
-  border-radius: 0.125rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 3px 6px #00000029;
   background: rgba(255, 255, 255, 0.1);
   position: relative;
   grid-column: auto;
-  grid-row: auto;
-  &:last-of-type{
-    margin-bottom:1rem;
-  }
+  grid-row: auto;    background: #fff;
+  box-shadow: 0px 3px 6px #00000029;
+
   &--selected {
     border-image: linear-gradient(to right, red, purple);
     border-image-slice: 1;
     border-width: 2px;
   }
+
   .section-in-area {
+    padding: 16px;
+    color: #000;
+    // background: #fff;
+    // box-shadow: 0px 3px 6px #00000029;
+    border-radius: 0.5rem;
+    height:100%;
+    .grid-content {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.125rem;
+      font-weight: bold;
+
+      .next-class-label {
+        font-weight: bold;
+      }
+
+      .time-label {
+        letter-spacing: 0.32px;
+        color: #999999;
+        font-size: 0.875rem;
+      }
+    }
+
+    .grid-class-content {
+      display: flex;
+      justify-content: flex-start;
+
+      .grid-class-text {
+        color: #848484;
+        font-size: 0.875rem;
+        font-weight: bold;
+      }
+
+      .divider {
+        margin: 0.5rem 0;
+        border-bottom: 0.08125rem solid #848484;
+      }
+    }
+
+    .title {
+      padding: 0.75rem 0 0.5rem 0;
+      font-size: 2.25rem;
+      color: #12279F;
+      font-weight: bold;
+      margin-bottom: 0px;
+    }
+
     h4 {
       padding: 0.75rem 1rem;
       font-size: 1.25rem;
       background: rgba(255, 255, 255, 0.1);
     }
+
+    .leaderboard-title{
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 0 0 0.5rem 2rem;
+    }
+
+    .leaderboard-content{
+      display: flex;
+      margin:0.5rem 0;
+
+      .leaderboard-serial-content{
+        display: flex;
+        align-items: center;
+        z-index: 2;
+
+        .serial-no-content{
+          width: 48px;
+          height: 48px;
+          border-radius: 48px;
+          background: #38CDEC;
+          color: #fff;
+          .serial-no-text{
+            position: relative;
+            left: 20px;
+            top: 11px;
+          }
+        }
+      }
+
+      .card-leaderboard-content{
+        position: relative;
+        left: -20px;
+        z-index: 1;
+        background: #38CDEC;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 10px;
+        padding: 16px;
+        color: #fff;
+        min-height: 80px;
+        width: 100%;
+        // max-width: 394px;
+        .card-leaderboard-text{
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 0.5rem;
+        }
+        .card-leaderboard-label{
+          margin-left:2rem;
+        }
+      }
+    }
+
     .content {
       padding: 0.75rem 1rem;
+    }
+  }
+
+  .section-time-table-area {
+    padding: 1rem 1rem 1rem 1rem;
+    color: #000;
+    background: #fff;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 0.5rem;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #D1D1D1;
+
+    .time-table-title{
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .time-table-content {
+      display: flex;
+      margin: 16px 0 24px 0;
+      width: 100%;
+
+      .grid-table-content {
+        display: flex;
+        justify-content: flex-start;
+        background: #fff;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 0.5rem;
+        padding: 8px;
+        margin-top: 0.75rem;
+
+        .grid-time-table-text {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #848484;
+          font-size: 0.875rem;
+          font-weight: bold;
+          width:100%;
+          max-width:200px;
+        }
+
+        .divider {
+          margin: 0.5rem 0;
+          border-bottom: 0.08125rem solid #848484;
+          width: auto;
+        }
+      }
+
+      .timing-show{
+       color: #848484;
+       width:100%;
+      }
+
+      .time-status {
+        .circle {
+          width: 24px;
+          height: 24px;
+          background: #E2E2E2;
+          border-radius: 50%;
+          margin-right: 0.5rem;
+        }
+
+        .border-status {
+          border-left: 1px solid #E2E2E2;
+          height: auto;
+          height: 100%;
+          position: relative;
+          left: 12px;
+        }
+      }
     }
   }
 }
 
 @include respond-above(md) {
   .dashboard-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-  }
-  .grid-item{
-    &:last-of-type{
-      margin-bottom:0;
-    }
+    grid-template-columns: minmax(auto, 30%) minmax(auto, 20%) minmax(auto, 20%) minmax(auto, 30%);
+    // grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: 150px 200px auto auto;
   }
   .attendence {
-    grid-column: 1 / span 2;
+    grid-column: 2 / span 2;
     grid-row: 1 / span 2;
   }
-  .empty {
-  }
+  .empty {}
   .leaderboard {
     grid-column: 4;
-    grid-row: 1 / span 3;
+    grid-row: 2/span 3;
+    overflow:auto;
   }
   .assessment {
-    grid-column: 3;
-    grid-row: 2 / span 3;
+    grid-column: 2/span 2;
+    grid-row: 3/span 2;
   }
   .timetable {
-    grid-column: 1 / span 2;
-    grid-row: 3 / span 2;
+    // grid-column: 1 / span 2;
+    grid-row: 2/span 3;
   }
+}
+
+
+// .grid-id-section{
+//   background: #F2F2F2 0% 0% no-repeat padding-box;
+//   box-shadow: 0px 3px 6px #00000029;
+//   border: 1px solid #F3CA3F;
+//   border-radius: 0.5rem;
+// }
+
+
+/* class room teacher lesson info */
+/* header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0.5rem 1rem 0.5rem 3rem;
+  min-height: 5rem;
+  @include respond-below(sm) {
+    flex-wrap: wrap;
+  }
+  .brand {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .page-title {
+      font-size: 1rem;
+      color: var(--secondary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      margin: 0px 1.5rem;
+    }
+  }
+
+  div.nav {
+    ul {
+      margin: 0px;
+
+      li {
+        display: inline-flex;
+
+        a {
+          color: var(--secondary-color);
+          font-size: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.125rem;
+          padding: 0.5rem 1rem;
+          border-radius: 0.25rem;
+
+          &:hover,
+          &:active,
+          &.active {
+            background: var(--black);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .header-content {
+    display: flex;
+    color: #fff;
+
+    .current-chapter-content {
+      display: flex;
+      margin: 0 1.5rem;
+      align-items: center;
+      font-size: 0.875rem;
+
+      .current-chapter-text {
+        margin: 0 1rem;
+
+        .chapter-separator {
+          border-bottom: 1px solid #848484;
+          margin: 0.5rem 0;
+        }
+      }
+    }
+
+    .header-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .start-btn {
+        height: 40px;
+        background: #F3CA3F 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 4px;
+        border: none;
+        width: 120px;
+        font-size: 0.875rem;
+      }
+    }
+
+
+  }
+
+  [type="date"] {
+    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+  }
+
+  [type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+
+  .date-label {
+    display: block;
+    color: #848484;
+    font-size: 0.875rem;
+  }
+
+  .date-input {
+    border: 0.0625rem solid #DCDCDC;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 4px;
+    width: 190px;
+    color: #848484;
+    font-size: 0.875rem;
+    height:32px;
+  }
+
 }

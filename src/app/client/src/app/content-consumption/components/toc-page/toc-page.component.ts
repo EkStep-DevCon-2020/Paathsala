@@ -107,8 +107,8 @@ export class TocPageComponent implements OnInit, OnDestroy {
           this.queryParams = { ...queryParams};
         });
       }, (error) => {
-        // this.router.navigate(['/']);
-        console.error('got error while fetching CollectionHierarchy', error );
+        this.toasterService.error("TextBook Not found");
+        console.log(' Collection not found for contentID', this.collectionId, error );
       });
   }
 

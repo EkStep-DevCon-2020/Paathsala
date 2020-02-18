@@ -1,10 +1,30 @@
+
 <app-side-menu></app-side-menu>
 <div class="st-dashboard">
   <section class="header">
-    <div class="brand">
-      <img src="../../../assets/images/logo.jpg" alt="" title="" width="180" />
+    <div>
+      <div class="brand">
+        <img src="../../../assets/images/logo.jpg" alt="" title="" width="180" />
+        <div class="page-title">Class Room</div>
+      </div>
     </div>
-    <div class="page-title">Class Room</div>
+
+    <div class="header-content">
+      <div>
+        <label for="selectdate" class='date-label mb-0'>Select date</label>
+        <input type="date" name="selectdate" id="selectdate" class='date-input'>
+      </div>
+      <div class="current-chapter-content">
+        <img src="../../../assets/images/chapter-img.png" alt="" title="" width="72px" height="72px">
+        <div class="current-chapter-text">
+          <div>Current Chapter Title comes here</div>
+          <div class="chapter-separator"></div>
+          <div>Medium</div>
+        </div>
+      </div>
+      <div class="header-btn"><button type="button" class="start-btn">Lets Start</button></div>
+    </div>
+
     <!-- <div class="nav">
       <ul>
         <li>
@@ -14,52 +34,112 @@
       </ul>
     </div> -->
   </section>
-  <div class="dashboard-grid scroll" >
-    <section class="grid-item attendence" [@appearSide]>
-      <div class="section-in-area">
-        <h4>Attendence</h4>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
-          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
-          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
-          reprehenderit ea molestias.
-        </div>
-      </div>
-    </section>
+  <div class="dashboard-grid scroll">
     <section class="grid-item empty" [@appearDown]>
       <div class="section-in-area">
-        <h4>Empty</h4>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
-          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
-          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
-          reprehenderit ea molestias.
+        <div class="grid-content">
+          <div>IV Class, Section A</div>
+          <div>English</div>
         </div>
+        <h4 class="title text-center mt-8">ID12893847</h4>
       </div>
     </section>
-    <section class="grid-item grid-item--selected leaderboard" [@appearDown]>
+    <section class="grid-item attendence">
       <div class="section-in-area">
-        <h4>Leaderboard</h4>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
-          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
-          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
-          reprehenderit ea molestias.
+        <h4>Attendence</h4>
+        
+        <div class="">
+          <div style="display:flex; justify-content: space-between;">
+            <div style="text-align: center;">
+              <img src="../../../../assets/images/pic2.png" alt="" title="" width="150px" height="150px">
+              <div>Student Name</div>
+              <div>85%</div>
+            </div>
+            <div style="text-align: center;">
+              <img src="../../../../assets/images/pic2.png" alt="" title="" width="150px" height="150px">
+              <div>Student Name</div>
+              <div>85%</div>
+            </div>
+            <div style="text-align: center;">
+              <img src="../../../../assets/images/pic2.png" alt="" title="" width="150px" height="150px">
+              <div>Student Name</div>
+              <div>85%</div>
+            </div>
+          </div>
+          <div class="separator" style="margin:0.5rem 0; border-bottom: 1px solid #EEEEEE;"></div>
+          <div style="display:flex; justify-content: space-between;">
+            <div style="text-align: center;">
+          <div>Today's % </div>
+          <div>92</div>
+          </div>
+          <div style="text-align: center;">
+            <div>Today's % </div>
+            <div>92</div>
+            </div>
+            <div style="text-align: center;">
+              <div>Today's % </div>
+              <div>92</div>
+              </div>
+          </div>
         </div>
       </div>
     </section>
-    <section class="grid-item assessment" [@appearSide]>
+    <section class="grid-item upcoming" [@appearDown]>
       <div class="section-in-area">
-        <h4>Time Table</h4>
-        <div class="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
-          corporis quaerat voluptatum eos tempora temporibus nisi voluptates
-          sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
-          reprehenderit ea molestias.
+        <div class="grid-content">
+          <div class="next-class-label">NEXT CLASS </div>
+          <div class="time-label">Starts in 20 mins</div>
+        </div>
+        <div class="grid-class-content">
+          <div><img src="../../../assets/images/pic.png" width="72px" height="72px"></div>
+          <div style="display: block; margin-left: 0.5rem;">
+            <div class="grid-class-text">Teacher's Professional Development Programme</div>
+            <div class="divider"></div>
+            <div class="grid-class-text">English | Class 4, Section A |</div>
+          </div>
         </div>
       </div>
     </section>
-    <section class="grid-item timetable" [@appearDown]>
+    <section class="grid-item timetable">
+      <div class="section-in-area section-time-table-area">
+        <div class="time-table-title">Time Table</div>
+        <div class="time-table-content">
+          <div class="time-status">
+            <div class="circle"></div>
+            <div class="border-status"></div>
+            <div class="circle"></div>
+          </div>
+          <div class="timing-show"> 8:15 - 9:00
+            <div class="grid-table-content">
+              <div><img src="../../../assets/images/pic.png" width="72px" height="72px" alt="" title=""></div>
+              <div style="display: block; margin-left: 0.5rem;">
+                <div class="grid-time-table-text">Teacher's Professional Development Programme</div>
+                <div class="divider"></div>
+                <div class="grid-time-table-text">Social Studies</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time-table-content">
+          <div class="time-status">
+            <div class="circle"></div>
+            <div class="border-status"></div>
+            <div class="circle"></div>
+          </div>
+          <div class="timing-show"> 8:15 - 9:00
+            <div class="grid-table-content">
+              <div><img src="../../../../assets/images/pic.png" width="72px" height="72px"></div>
+              <div style="display: block; margin-left: 0.5rem;">
+                <div class="grid-time-table-text">Teacher's Professional Development Programme</div>
+                <div class="divider"></div>
+                <div class="grid-time-table-text">Social Studies</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="grid-item assessment" [@appearDown]>
       <div class="section-in-area">
         <h4>Assessment</h4>
         <div class="content">
@@ -70,16 +150,76 @@
         </div>
       </div>
     </section>
-    <section class="grid-item upcoming" [@appearDown]>
+    
+    <section class="grid-item leaderboard" [@appearDown]>
+      <!-- grid-item--selected -->
       <div class="section-in-area">
-        <h4>Next Class</h4>
-        <div class="content">
+        <div class="leaderboard-title">Assessment Leader Board</div>
+        <div class="leaderboard-content">
+          <div class="leaderboard-serial-content">
+            <div class="serial-no-content">
+              <span class="serial-no-text">1</span>
+            </div>
+          </div>
+          <div class="card-leaderboard-content">
+            <div class="card-leaderboard-text">
+              <div class="card-leaderboard-label">Student Name </div>
+              <div>L 8/10</div>
+            </div>
+            <div class="card-leaderboard-label">90sec</div>
+          </div>
+        </div>
+        <div class="leaderboard-content">
+          <div class="leaderboard-serial-content">
+            <div class="serial-no-content">
+              <span class="serial-no-text">1</span>
+            </div>
+          </div>
+          <div class="card-leaderboard-content">
+            <div class="card-leaderboard-text">
+              <div class="card-leaderboard-label">Student Name </div>
+              <div>L 8/10</div>
+            </div>
+            <div class="card-leaderboard-label">90sec</div>
+          </div>
+        </div>
+        <div class="leaderboard-content">
+          <div class="leaderboard-serial-content">
+            <div class="serial-no-content">
+              <span class="serial-no-text">1</span>
+            </div>
+          </div>
+          <div class="card-leaderboard-content">
+            <div class="card-leaderboard-text">
+              <div class="card-leaderboard-label">Student Name </div>
+              <div>L 8/10</div>
+            </div>
+            <div class="card-leaderboard-label">90sec</div>
+          </div>
+        </div>
+        <div class="leaderboard-content">
+          <div class="leaderboard-serial-content">
+            <div class="serial-no-content">
+              <span class="serial-no-text">1</span>
+            </div>
+          </div>
+          <div class="card-leaderboard-content">
+            <div class="card-leaderboard-text">
+              <div class="card-leaderboard-label">Student Name </div>
+              <div>L 8/10</div>
+            </div>
+            <div class="card-leaderboard-label">90sec</div>
+          </div>
+        </div>
+        <!-- <div class="content">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur
           corporis quaerat voluptatum eos tempora temporibus nisi voluptates
           sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde
           reprehenderit ea molestias.
-        </div>
+        </div> -->
       </div>
     </section>
+
+
   </div>
 </div>
