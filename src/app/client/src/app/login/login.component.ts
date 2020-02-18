@@ -117,14 +117,7 @@ export class LoginComponent implements OnInit {
       this.telemetryServcie.visit(data);
       this.openSuccessModal = true;
       this.openErrorModal = false;
-      this.configService.userInfo = {
-        "osUpdatedAt": "2020-02-18T12:54:26.279Z",
-        "code": "VIS6",
-        "osCreatedAt": "2020-02-18T12:54:26.279Z",
-        "name": "User2",
-        "photo": "https://vignette.wikia.nocookie.net/jamescameronsavatar/images/5/5c/Avatar_Logo_revised.png/revision/latest?cb=20100207200600",
-        "osid": "1-63c8bfe5-e5ca-4f3b-bb1a-46ac41f3b917"
-      } || res.result;
+      this.configService.userInfo = res.result;
       console.log('-------response--------', res);
     }, error => {
       this.openErrorModal = true;
