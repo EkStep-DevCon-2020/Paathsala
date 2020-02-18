@@ -10,6 +10,7 @@ import { PeriodSelectionComponent } from './components/period-selection/period-s
 import { DataService } from './service/data.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { TelemetryService } from './service/telemetry.service';
 
 @NgModule({
   declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent],
@@ -24,7 +25,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     })
   ],
   providers: [
-    DataService
+    DataService,
+    TelemetryService
   ],
   exports: [SideMenuComponent]
 })
