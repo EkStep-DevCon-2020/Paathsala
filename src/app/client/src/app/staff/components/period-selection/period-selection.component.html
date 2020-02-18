@@ -1,22 +1,41 @@
-<br>
-<div class='app'>
+<app-side-menu></app-side-menu>
+<div class="staff-list">
+  <section class="header">
+    <div class="brand">
+      <img src="../../../assets/images/logo.jpg" alt="" title="" width="180" />
+    </div>
+    <div class="page-title">Staff Room</div>
+  </section>
 
-  <div class='app-calendar'>
-    <full-calendar
-      #calendar
-      defaultView="timeGridWeek"
-      maxTime="19:00:00"
-      minTime="07:00:00"
-      [header]="{
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      }"
-      [plugins]="calendarPlugins"
-      [weekends]="calendarWeekends"
-      [events]="calendarEvents"
-      (eventClick)="handleEventClick($event)"
-    ></full-calendar>
+  <div class="ui stackable grid">
+    <div class="three wide column">
+      <section class="staff-grid-item">
+        <div class="section-in-area">
+          <div class="img-container">
+            <img [src]="profileInfo.avatar" (error)="profilePic.src = defaultProfileImg" #profilePic>
+          </div>
+          <h4>{{profileInfo.name}}</h4>
+          <div class="subjects-section">
+            <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
+                 {{sub}}
+             </span> -->
+            <span class="subject-pill" *ngIf="profileInfo.subject">
+              {{profileInfo.subject}}
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="nine wide column sb-bg-color-white">
+      <section>
+        <full-calendar #calendar defaultView="timeGridWeek" maxTime="19:00:00" minTime="07:00:00" [header]="{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        }" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents"
+          (eventClick)="handleEventClick($event)"></full-calendar>
+      </section>
+    </div>
+
   </div>
-
 </div>
