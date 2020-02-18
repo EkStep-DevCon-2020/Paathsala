@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import {DataService} from '../../service/data.service';
 import { map } from 'rxjs/operators';
+import { ConfigService } from '../../../config/config.service';
 
 const year = (new Date()).getFullYear();
 const ClassMap =  {
@@ -33,7 +34,11 @@ export class PeriodSelectionComponent implements OnInit {
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarEvents: EventInput[] = [];
   profileInfo = {};
-  constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService){ }
+  constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService, public configService: ConfigService){ 
+    if(!this.configService.userInfo){
+      this.router.navigate(['']);
+    }
+  }
   ngOnInit() {
     this.getTeacherTimeTable(this.activatedRoute.snapshot.params.id).subscribe(data => {
       console.log(data);

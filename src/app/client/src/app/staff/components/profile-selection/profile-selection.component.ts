@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../service/data.service';
 import {Router} from '@angular/router';
 import {SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, CARD_ANIMATION, APPEAR_SIDE} from '../../../theme/app-animations';
+import { ConfigService } from '../../../config/config.service';
 
 @Component({
   selector: 'app-profile-selection',
@@ -16,7 +17,10 @@ export class ProfileSelectionComponent implements OnInit {
   public defaultProfileImg = './assets/images/default-profile.png';
   public teacherList;
 
-  constructor(private dataService: DataService, public router: Router) {
+  constructor(private dataService: DataService, public router: Router, public configService: ConfigService) {
+    if(!this.configService.userInfo){
+      this.router.navigate(['']);
+    }
   }
 
   ngOnInit() {
