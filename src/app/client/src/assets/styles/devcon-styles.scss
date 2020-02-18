@@ -17,6 +17,7 @@ body {
   background: var(--devcon-bg-img) no-repeat center !important;
   background-size: cover;
   background-repeat: repeat-y;
+  padding:0px 0px 0px 0px !important;
 }
 p {
   margin: 0px;
@@ -47,7 +48,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 1rem 2rem 1rem 3rem;
+  padding:0.5rem 1rem 0.5rem 3rem;
   height: 5rem;
   .brand {
     cursor: pointer;
