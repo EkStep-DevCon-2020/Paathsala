@@ -70,6 +70,9 @@ module.exports = (app, keycloak) => {
 
   app.use('/dist', express.static(path.join(__dirname, '../dist'), { extensions: ['ejs'], index: false }))
 
+  app.use('/school', express.static(path.join(__dirname, '../dist'), { extensions: ['ejs'], index: false }))
+
+
   app.use(express.static(path.join(__dirname, '../tenant'), { index: false }))
 
   app.use('/sunbird-plugins', express.static(path.join(__dirname, '../sunbird-plugins')))
@@ -88,7 +91,7 @@ module.exports = (app, keycloak) => {
 
   app.all('/play/quiz/*', playContent);
 
-  app.all(['/staff/*', '/', '/get', '/:slug/get', '/:slug/get/dial/:dialCode',  '/get/dial/:dialCode', '/explore',
+  app.all(['/school', '/school/*', '/staff/*', '/', '/get', '/:slug/get', '/:slug/get/dial/:dialCode',  '/get/dial/:dialCode', '/explore',
     '/explore/*', '/:slug/explore', '/:slug/explore/*', '/play/*', '/explore-course', '/explore-course/*',
     '/:slug/explore-course', '/:slug/explore-course/*', '/:slug/signup', '/signup', '/:slug/sign-in/*',
     '/sign-in/*', '/download/*', '/accountMerge/*', '/:slug/download/*', '/certs/*', '/recover/*', '/profile-summary', '/profile-summary/*'], indexPage(false))
