@@ -25,6 +25,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
   ],
   providers: [
     DataService
-  ]
+  ],
+  exports: [SideMenuComponent]
 })
 export class StaffModule { }

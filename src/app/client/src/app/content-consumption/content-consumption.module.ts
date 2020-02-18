@@ -12,6 +12,7 @@ import { SuiAccordionModule, SuiModalModule, SuiDimmerModule } from 'ng2-semanti
 import { OrderModule } from 'ngx-order-pipe';
 import { TelemetryModule } from '@sunbird/telemetry';
 import { CommonConsumptionModule } from '@project-sunbird/common-consumption';
+import { StaffModule } from '../staff/staff.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { CommonConsumptionModule } from '@project-sunbird/common-consumption';
     CreditsAndLicenceComponent
   ],
   imports: [
+    StaffModule,
     CommonModule,
     OrderModule,
     SharedModule,
