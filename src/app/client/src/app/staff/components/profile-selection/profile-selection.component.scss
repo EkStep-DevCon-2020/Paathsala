@@ -1,11 +1,12 @@
 :host {
   .staff-list {
     width: 100%;
-    background-image: linear-gradient(
-      to bottom right,
-      rgba(1, 0, 53, 1),
-      rgba(18, 39, 159, 0)
-    );
+    background-image: linear-gradient(to bottom right, #010035, rgb(5, 16, 77));
+    // background-image: linear-gradient(
+    //   to bottom right,
+    //   rgba(1, 0, 53, 1),
+    //   rgba(18, 39, 159, 0)
+    // );
   }
   .staff-grid {
     display: grid;
@@ -16,8 +17,10 @@
     justify-items: stretch;
     -webkit-box-align: stretch;
     align-items: stretch;
-    height: calc(100vh - 5rem);
-    padding: 2rem;
+    // height: calc(100vh - 5rem);
+    // padding: 2rem;
+    padding: 6rem 2rem 2rem 2rem;
+    z-index: 3;
   }
 
   .staff-grid-item {
