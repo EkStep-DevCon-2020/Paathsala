@@ -32,10 +32,12 @@ export class PeriodSelectionComponent implements OnInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarEvents: EventInput[] = [];
+  profileInfo = {};
   constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService){ }
   ngOnInit() {
     this.getTeacherTimeTable(this.activatedRoute.snapshot.params.id).subscribe(data => {
       console.log(data);
+      this.profileInfo = data;
       this.calendarEvents = data.periods.map((row) => {
         const sessionIdArray = row.sessionId.match(/.{1,2}/g);
         const sessionIdMap = {

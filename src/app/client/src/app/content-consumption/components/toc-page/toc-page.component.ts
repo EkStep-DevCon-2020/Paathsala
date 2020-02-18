@@ -98,8 +98,8 @@ export class TocPageComponent implements OnInit, OnDestroy {
   private getContent(): void {
     this.activatedRoute.params.pipe(
       mergeMap((params) => {
-        this.collectionId = params.collectionId;
-        return this.getCollectionHierarchy(params.collectionId);
+        this.collectionId = 'do_11287198635947622412' || params.collectionId;
+        return this.getCollectionHierarchy(this.collectionId);
       }))
       .subscribe((data) => {
         this.setTelemetryData();

@@ -13,5 +13,105 @@ body {
     margin: 0 auto;
     max-width: 900px;
   }
-  
   // NOTE: the fullcalendar stylesheets are included in the app's global styles.scss
+
+  .staff-grid-item {
+    // border: 0.0625rem solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border-radius: 0.125rem;
+    background: rgba(88, 255, 119, 0.1);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, color 0.28s ease-in,
+      box-shadow 0.3s ease-in;
+
+    .section-in-area {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding: 2rem;
+      height: 100%;
+
+      .img-container {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        border: 0.25rem solid var(--yellow);
+        overflow: hidden;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        background-color: #5a5a63;
+        margin-bottom: 1rem;
+        box-shadow: 0px 0px 4.5rem 0.0625rem rgba(255, 255, 255, 0.3);
+        transition: all 0.2s ease-in-out;
+        img {
+          max-height: 100%;
+          object-fit: fill;
+          transform-origin: center;
+          transition: transform 0.25s, visibility 0.25s ease-in;
+        }
+      }
+      h4 {
+        // padding: 0.75rem 1rem;
+        font-size: 1.25rem;
+        /* background: rgba(255, 255, 255, 0.1); */
+        color: var(--yellow);
+      }
+      .subjects-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        .subject-pill {
+          display: inline-block;
+          border: 0.0615rem solid var(--yellow);
+          border-radius: 1.5rem;
+          padding: 0.25rem 0.75rem;
+          margin: 0.25rem 0.25rem;
+          min-width: 3rem;
+          font-size: 0.75rem;
+          font-weight: 100;
+          color: #b9b9b9;
+        }
+      }
+    }
+    &.selected,
+    &:hover {
+      .section-in-area {
+        background: var(--yellow);
+        .img-container {
+          border: 0.0625rem solid var(--blue);
+          img {
+            max-height: 100%;
+            object-fit: fill;
+          }
+        }
+        h4 {
+          color: var(--white);
+        }
+        .subjects-section {
+          .subject-pill {
+            border: 0.0625rem solid var(--black);
+            color: var(--black);
+          }
+        }
+      }
+    }
+
+    &:hover:not(.selected) {
+      background: rgba(81, 129, 90, 0.2);
+      box-shadow: 0px 0px 1rem 0.125rem rgba(81, 129, 90, 0.5);
+      .section-in-area {
+        .img-container {
+          img {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
