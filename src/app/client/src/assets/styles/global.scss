@@ -260,6 +260,10 @@ app-workspace {
 .fc-time-grid-event .fc-content {
   text-align: center;
 }
+.fc-ltr .fc-axis {
+  background: var( --devcon-primary-color);
+  color: #CCC;
+}
 //.fc-unthemed td.fc-today {
   //background: #7c7b7b;
 //}

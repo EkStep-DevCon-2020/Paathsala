@@ -34,7 +34,7 @@
           center: 'title',
           right: 'timeGridWeek,timeGridDay'
         }" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents"
-          (eventClick)="handleEventClick($event)" [hiddenDays]="[0]"></full-calendar>
+          (eventClick)="handleEventClick($event)" [hiddenDays]="[0]" [allDaySlot]="false"></full-calendar>
       </section>
     </div>
 
