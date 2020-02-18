@@ -20,10 +20,19 @@ export class ProfileSelectionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getData('https://api.myjson.com/bins/zyhd0').subscribe(
-      data => {
+    const body = {
+      "request": {
+          "filters": {
+            "objectType":"Teacher",
+            "identifier": ["T1", "T2","T3", "T4", "T5","T6"],
+            "status": []
+          }
+      }
+  };
+    this.dataService.post('https://devcon.sunbirded.org/action/composite/v3/search', body, { headers: {'Content-Type': 'application/json'}})
+    .subscribe((data: any) => {
         console.log(data);
-        this.teacherList = data;
+        this.teacherList = data.result.Teacher;
       },
       error => {
         console.log(error);
@@ -32,6 +41,6 @@ export class ProfileSelectionComponent implements OnInit {
   }
 
   public toogleSelected(teacher) {
-    window.location.href = 'staff/period/selection/' + teacher.name;
+    this.router.navigate(['staff/period/selection/' + teacher.identifier]);
   }
 }
