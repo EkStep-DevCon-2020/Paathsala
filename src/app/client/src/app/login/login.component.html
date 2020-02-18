@@ -56,11 +56,10 @@
                 <img src="./../../../../../assets/images/check.gif" alt="checked">
                 <div class="status-info">
                     <div class="title">
-                        Title comes here
+                        Welcome to Staff Room
                     </div>
-                    <div class="status-msg"> You are recognized as Mr/Mrs. NAME
-                        COMES HERE. Please confirm and
-                        continue to create your content.</div>
+                    <div class="status-msg"> You are recognized as {{configService.userInfo.name}}. Please confirm to
+                        continue.</div>
                 </div>
                 <a class="sb-btn sb-btn-secondary sb-btn-normal"
                     (click)="openErrorModal = false; navigate()">CONFIRM</a>
