@@ -44,6 +44,12 @@ export class PrincipleDashboardClassViewComponent implements OnInit {
       hh = '0' + hh;
     }
     this.curentSessionId = event.target.value + '02' + dt + hh;
+    this.getAttendence(this.curentSessionId).subscribe(data => {
+      this.attendenceList = data;
+    });
+    this.getAssessmentScore(this.curentSessionId).subscribe(data => {
+      this.assessmentScore = data;
+    });
     console.log(this.curentSessionId);
     this.populateTimeTable(event.target.value);
   }
