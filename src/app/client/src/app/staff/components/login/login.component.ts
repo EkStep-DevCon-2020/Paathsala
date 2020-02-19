@@ -171,7 +171,7 @@ export class LoginComponent implements OnInit {
           const data = {
             profileId: res.result.Visitor[0].osid
           };
-          this.configService.userInfo = res.result;
+          this.configService.userInfo = res.result.Visitor[0];
           this.telemetryServcie.visit(data);
           this.openSuccessModal = true;
           this.openErrorModal = false;
