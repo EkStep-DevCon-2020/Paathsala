@@ -1,5 +1,5 @@
 import { HttpOptions } from './httpOptions';
-import { of as observableOf, throwError as observableThrowError, Observable } from 'rxjs';
+import { of as observableOf, throwError as observableThrowError, Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

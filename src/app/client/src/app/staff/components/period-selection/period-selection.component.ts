@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 import { ConfigService } from '../../../config/config.service';
 
 const year = (new Date()).getFullYear();
+const currentDay = (new Date()).getDate();
 const ClassMap =  {
   "01" : "Class 1",
   "02" : "Class 2",
@@ -52,12 +53,15 @@ export class PeriodSelectionComponent implements OnInit {
           day: parseInt(sessionIdArray[2]),
           hour: parseInt(sessionIdArray[3])
         }
-        const event = {
+        const event: any = {
           title: `${row.subject} - ${ClassMap[sessionIdMap.class]}`,
           start: new Date(year, sessionIdMap.month - 1, sessionIdMap.day, sessionIdMap.hour),
           end: new Date(year, sessionIdMap.month - 1, sessionIdMap.day, sessionIdMap.hour + 1),
           id: row.textBookId, 
           sessionId: row.sessionId
+        }
+        if(currentDay > sessionIdMap.day){
+          event.backgroundColor = 'blue';
         }
         return event;
       })
@@ -78,8 +82,7 @@ export class PeriodSelectionComponent implements OnInit {
   }
   handleEventClick(arg) {
     this.configService.sessionId = arg.event.extendedProps.sessionId;
-    console.log(arg.event.id, arg.event.title, arg.event.extendedProps.sessionId);
+    console.log(arg.event);
     this.router.navigate(['play/collection/' + arg.event.id]);
   }
-
 }
