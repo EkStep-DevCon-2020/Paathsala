@@ -12,6 +12,11 @@ import { ConfigService } from '../../../config/config.service';
 
 const year = (new Date()).getFullYear();
 const currentDay = (new Date()).getDate();
+const currentHour = (new Date()).getHours()
+const completedClassColor = 'blue';
+const ongoingClassColor = 'yellow';
+const upcomingClassColor = '#010035';
+
 const ClassMap =  {
   "01" : "Class 1",
   "02" : "Class 2",
@@ -41,6 +46,8 @@ export class PeriodSelectionComponent implements OnInit {
     }
   }
   ngOnInit() {
+    const today = new Date();
+    today.setHours(today.getHours(),0,0,0)
     this.getTeacherTimeTable(this.activatedRoute.snapshot.params.id).subscribe(data => {
       console.log(data);
       this.profileInfo = data;
@@ -60,8 +67,12 @@ export class PeriodSelectionComponent implements OnInit {
           id: row.textBookId, 
           sessionId: row.sessionId
         }
-        if(currentDay > sessionIdMap.day){
-          event.backgroundColor = 'blue';
+        if(event.start.getTime() < today.getTime()){
+          event.backgroundColor = completedClassColor;
+        } else if(event.start.getHours() === today.getHours() && event.start.getDate() === today.getDate()){
+          event.backgroundColor = ongoingClassColor;
+        } else {
+          event.backgroundColor = upcomingClassColor;
         }
         return event;
       })
@@ -82,7 +93,11 @@ export class PeriodSelectionComponent implements OnInit {
   }
   handleEventClick(arg) {
     this.configService.sessionId = arg.event.extendedProps.sessionId;
-    console.log(arg.event);
-    this.router.navigate(['play/collection/' + arg.event.id]);
+    console.log(arg.event.backgroundColor, arg.event);
+    if(arg.event.backgroundColor === completedClassColor){
+      this.router.navigate(['staff/dashboard/' + this.configService.sessionId]);
+    } else {
+      this.router.navigate(['play/collection/' + arg.event.id]);
+    }
   }
 }

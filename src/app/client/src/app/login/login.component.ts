@@ -183,6 +183,9 @@ export class LoginComponent implements OnInit {
           this.openErrorModal = true;
         }
       }, (err) => {
+        if (this.visitorid === "000") {
+          return this.handleQRCode();
+        }
         console.log('identifyFace err ', err);
         this.openSuccessModal = false;
         this.openErrorModal = true;
