@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrincipleDashboardComponent } from './principle-dashboard/principle-dashboard.component';
 import { PrincipleDashboardClassViewComponent } from './principle-dashboard-class-view/principle-dashboard-class-view.component';
 import { PrincipleDashboardTeacherViewComponent } from './principle-dashboard-teacher-view/principle-dashboard-teacher-view.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PrincipleDashboardTeacherViewComponent } from './principle-dashboard-te
     BrowserAnimationsModule, // used this instaed of browser module since it includes in it.
     CoreModule,
     CommonModule,
+    FullCalendarModule,
     HttpClientModule,
     SuiSelectModule, SuiModalModule, SuiAccordionModule, SuiPopupModule, SuiDropdownModule, SuiProgressModule,
     SuiRatingModule, SuiCollapseModule,
