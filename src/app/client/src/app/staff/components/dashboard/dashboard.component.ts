@@ -5,6 +5,7 @@ import {DataService} from '../../service/data.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ToasterService} from '@sunbird/shared';
 import {forkJoin} from 'rxjs';
+import { ConfigService } from '../../../config/config.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,12 +19,23 @@ export class DashboardComponent implements OnInit {
   teacherProfile: any;
   queryParam: any;
   timeTable: any;
-
+  loggedIn = false;
   constructor(private dataService: DataService, public activatedRoute: ActivatedRoute,
-              public toasterService: ToasterService) {
+              public toasterService: ToasterService, public configService: ConfigService) {
+                if(this.configService.userInfo){
+                  this.loggedIn = true;
+                  console.log('===user loggedin in constructor=====', this.configService.userInfo, this.configService.teacherInfo);
+                }
   }
-
+  handleLogin(){
+    this.loggedIn = true;
+    console.log('===user loggedin event=====', this.configService.userInfo, this.configService.teacherInfo);
+  }
   ngOnInit() {
+    if(!this.loggedIn){
+      console.log("not logged in returning in ngoninit");
+      return;
+    }
     this.fetchData(this.activatedRoute.snapshot.params.qrCode).subscribe(data => {
       console.log(data);
       this.teacherProfile = data;

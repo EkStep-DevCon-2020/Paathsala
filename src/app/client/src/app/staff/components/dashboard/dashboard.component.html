@@ -1,5 +1,6 @@
-<app-side-menu></app-side-menu>
-<div class="st-dashboard">
+<app-login *ngIf="!loggedIn" [redirectToStaffRoom]="false" (loginComplete)="handleLogin()"></app-login>
+<app-side-menu *ngIf="loggedIn"></app-side-menu>
+<div *ngIf="loggedIn" class="st-dashboard">
   <section class="header">
     <div class="header-area">
       <div>

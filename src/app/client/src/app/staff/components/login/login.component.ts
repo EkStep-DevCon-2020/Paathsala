@@ -1,6 +1,6 @@
-import { ConfigService } from '../config/config.service';
-import { TelemetryService } from '../telemetry/telemetry.service';
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ConfigService } from '../../../config/config.service';
+import { TelemetryService } from '../../../telemetry/telemetry.service';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild, Input, EventEmitter, Output } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 import { catchError, map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
@@ -15,7 +15,8 @@ const IDEA_ID = 'staff-room';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  @Input() redirectToStaffRoom = true;
+  @Output() loginComplete = new EventEmitter();
   @ViewChild('video') videoElement: ElementRef;
   @ViewChild('canvas') canvas: ElementRef;
   videoWidth = 0;
@@ -197,7 +198,11 @@ export class LoginComponent implements OnInit {
     if(this.canvas && this.canvas.nativeElement){
       (this.canvas.nativeElement.getContext('2d')).clearRect(0, 0, this.canvas.nativeElement.height, this.canvas.nativeElement.width);
     }
-    this.router.navigate(["staff/profile/selection"]);
+    if(this.redirectToStaffRoom){
+      this.router.navigate(["staff/profile/selection"]);
+    } else {
+      this.loginComplete.emit(true);
+    }
   }
   closeModal() {
     (this.canvas.nativeElement.getContext('2d')).clearRect(0, 0, this.canvas.nativeElement.height, this.canvas.nativeElement.width);
