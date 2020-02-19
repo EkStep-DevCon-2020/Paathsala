@@ -6,8 +6,8 @@ import { catchError, map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
-const STALL_ID = 'school';
-const IDEA_ID = 'staff-room';
+const STALL_ID = 'STA2';
+const IDEA_ID = 'IDE10';
 
 @Component({
   selector: 'app-login',
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
   handleQRCode(){
     this.configService.userInfo = {
       "osUpdatedAt": "2020-02-18T12:54:26.279Z",
-      "code": "000000",
+      "code": "000",
       "osCreatedAt": "2020-02-18T12:54:26.279Z",
       "name": "Demo user",
       "photo": "https://vignette.wikia.nocookie.net/jamescameronsavatar/images/5/5c/Avatar_Logo_revised.png/revision/latest?cb=20100207200600",
