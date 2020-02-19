@@ -1,5 +1,4 @@
 <app-login *ngIf="!loggedIn" [redirectToStaffRoom]="false" (loginComplete)="handleLogin()"></app-login>
-<app-side-menu *ngIf="loggedIn"></app-side-menu>
 <div *ngIf="loggedIn" class="st-dashboard">
   <section class="header">
     <div class="header-area">
@@ -109,8 +108,8 @@
 
     <section class="grid-item assessment">
       <div class="section-in-area">
-        <div class="leaderboard-title">Assessment</div>
-      <iframe src="https://deveshmantra.github.io/quml_player/index.html" width="100%" border="0" height="100%"></iframe>
+        <div class="leaderboard-title" style="display: flex;justify-content: space-between;">Assessment <button class="sb-btn sb-btn-normal sb-btn-default">Home Assessment</button></div>
+      <iframe src="https://deveshmantra.github.io/quml_player/index.html" width="100%" style="border:0px;" height="100%"></iframe>
       </div>
     </section>
 
