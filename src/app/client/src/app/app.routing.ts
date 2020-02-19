@@ -3,8 +3,12 @@ import { ErrorPageComponent, AuthGuard } from '@sunbird/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
 import { LoginComponent } from './login/login.component';
+import { PrincipleDashboardComponent } from './principle-dashboard/principle-dashboard.component';
 
 const appRoutes: Routes = [
+  {
+    path: 'principle/dashboard', component: PrincipleDashboardComponent
+  },
   {
     path: '', component: LoginComponent
   },
