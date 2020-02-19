@@ -92,11 +92,12 @@ export class ContentPlayerPageComponent implements OnInit, OnDestroy, OnChanges 
         this.contentDetails = _.get(response, 'result.content');
         const status = !_.has(this.contentDetails, 'desktopAppMetadata.isAvailable') ? false :
         !_.get(this.contentDetails, 'desktopAppMetadata.isAvailable');
-        this.isContentDeleted.next({value: status});
+        // this.isContentDeleted.next({value: status});
         this.getContentConfigDetails(this.contentId, options);
         this.setTelemetryData();
       }, error => {
-        this.isContentDeleted.next({value: true});
+        // this.isContentDeleted.next({value: true});
+        this.toasterService.error("Content not found");
         this.setTelemetryData();
       });
   }
@@ -112,13 +113,13 @@ export class ContentPlayerPageComponent implements OnInit, OnDestroy, OnChanges 
 
   checkContentDeleted(event) {
     if (event && this.isConnected && !this.router.url.includes('browse')) {
-        this.isContentDeleted.next({value: true});
+        // this.isContentDeleted.next({value: true});
         this.deletedContent.emit(this.contentDetails);
     }
   }
 
   checkContentDownloading(event) {
-    this.isContentDeleted.next({value: false});
+    // this.isContentDeleted.next({value: false});
     this.contentDownloaded.emit(event);
   }
 

@@ -7,10 +7,10 @@
       <div class="section-in-area class-selection-grid">
         <div class="heading font-weight-bold">CLASS</div>
         <div class="grid-section-content">
-          <select id="classSelect" class="">
-            <option value="volvo">Class 5</option>
-            <option value="saab">Class 6 </option>
-            <option value="opel">Class 7</option>
+          <select (change)="handleClassChange($event)" id="classSelect" class="">
+            <option value="09">Class 9</option>
+            <option value="08">Class 8</option>
+            <option value="10">Class 10</option>
           </select>
         </div>
       </div>
@@ -84,36 +84,19 @@
       <div class="section-in-area">
         <div class="time-table-title">Time Table</div>
         <div class="time-table-content-container">
-          <div class="time-table-content">
+          <div *ngFor="let period of timeTable" class="time-table-content">
             <div class="time-status">
               <div class="circle"></div>
               <div class="border-status"></div>
               <div class="circle"></div>
             </div>
-            <div class="timing-show"> 8:15 - 9:00
+            <div class="timing-show"> {{period.start}} - {{period.end}}
               <div class="grid-table-content">
                 <div><img src="../../../assets/images/pic.png" width="72px" height="72px" alt="" title=""></div>
                 <div class="d-block mx-8 w-100">
-                  <div class="grid-time-table-text sb__ellipsis sb__ellipsis--two">Teacher's Professional Development Programme</div>
+                  <div class="grid-time-table-text sb__ellipsis sb__ellipsis--two">Teacher's Name</div>
                   <div class="divider"></div>
-                  <div class="grid-time-table-text">Social Studies</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="time-table-content">
-            <div class="time-status">
-              <div class="circle"></div>
-              <div class="border-status"></div>
-              <div class="circle"></div>
-            </div>
-            <div class="timing-show"> 8:15 - 9:00
-              <div class="grid-table-content">
-                <div><img src="../../../assets/images/pic.png" width="72px" height="72px" alt="" title=""></div>
-                <div class="d-block mx-8 w-100">
-                  <div class="grid-time-table-text sb__ellipsis sb__ellipsis--two">Teacher's Professional Development Programme</div>
-                  <div class="divider"></div>
-                  <div class="grid-time-table-text">Social Studies</div>
+                  <div class="grid-time-table-text">{{period.subject}}</div>
                 </div>
               </div>
             </div>

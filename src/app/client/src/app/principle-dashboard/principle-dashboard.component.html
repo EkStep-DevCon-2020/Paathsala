@@ -5,9 +5,9 @@
         <img src="../../../assets/images/logo.jpg" alt="" title="" width="180" />
         <div class="switch-field">
           <input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
-          <label for="radio-one">Class View</label>
+          <label (click)="handleToggle('class')" for="radio-one">Class View</label>
           <input type="radio" id="radio-two" name="switch-one" value="no" />
-          <label for="radio-two">Teacher View</label>
+          <label (click)="handleToggle('teacher')" for="radio-two">Teacher View</label>
         </div>
       </div>
     </div>
