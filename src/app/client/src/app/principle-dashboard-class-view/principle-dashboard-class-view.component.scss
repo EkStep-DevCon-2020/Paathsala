@@ -44,7 +44,8 @@
 @include respond-above(md) {
   .dashboard-grid {
     grid-template-columns: minmax(auto, 30%) minmax(auto, 20%) minmax(auto, 20%) minmax(auto, 30%);
-    grid-template-rows: 9rem 12rem auto auto;
+    grid-template-rows: 9rem 5rem auto auto;
+    height:100vh;
   }
 
   .attendence {
@@ -57,6 +58,7 @@
   .leaderboard {
     grid-column: 4;
     grid-row: 2/span 3;
+    overflow: auto;
   }
 
   .assessment {
@@ -67,6 +69,7 @@
   .timetable {
     // grid-column: 1 / span 2;
     grid-row: 2/span 3;
+    overflow: auto;
   }
 }
 

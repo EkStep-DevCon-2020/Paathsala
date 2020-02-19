@@ -122,9 +122,9 @@
       }
   
       .leaderboard-content-container {
-        overflow-y: auto;
-        height: calc(100vh - 228px);
-        padding-right: 0.5rem;
+        // overflow-y: auto;
+        // height: calc(100vh - 228px);
+        // padding-right: 0.5rem;
   
         .leaderboard-content {
           margin: 0.5rem 0;
@@ -138,7 +138,7 @@
           }
   
           .card-leaderboard-content.third {
-            background: #38CDEC;
+            background: #1093af;
           }
   
           .card-leaderboard-content {
@@ -195,10 +195,10 @@
       }
   
       .time-table-content-container {
-        overflow-x: hidden;
-        overflow-y: auto;
-        height: calc(100vh - 228px);
-        padding-right: 0.5rem;
+        // overflow-x: hidden;
+        // overflow-y: auto;
+        // height: calc(100vh - 228px);
+        // padding-right: 0.5rem;
   
         .time-table-content {
           display: flex;
@@ -295,7 +295,7 @@
         align-items: center;
         font-size: 0.875rem;
         background: #eee;
-        border-radius: 19px;
+        border-radius: 8px;
         cursor: pointer;
         transition: all .25s ease-in-out;
 
@@ -331,7 +331,7 @@
             color: var(--devcon-primary-color);
             box-shadow: 0px 32px 5px -28px rgba(0,0,0,0.3);
             .profile-pic {
-                border: 1px solid var(--devcon-primary-color);
+                // border: 1px solid var(--devcon-primary-color);
             }
             .profile-separator {
                 border-bottom: calculateRem(1px) solid var(--devcon-primary-color);
@@ -363,6 +363,7 @@
   .leaderboard {
     grid-column: 4;
     grid-row: 2/span 3;
+    overflow: auto;
   }
 
   .assessment {
@@ -372,7 +373,8 @@
 
   .timetable {
     // grid-column: 1 / span 2;
-    grid-row: 2/span 3;
+    grid-row: 2/span 3;overflow: auto;
+    overflow: auto;
   }
 }
 

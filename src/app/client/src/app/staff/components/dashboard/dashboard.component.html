@@ -37,7 +37,7 @@
   </section>
 
   <div class="dashboard-grid scroll">
-    <section class="grid-item empty" [@appearDown]>
+    <section class="grid-item empty">
       <div class="section-in-area">
         <div class="grid-section-content">
           <div>{{ classname }}</div>
@@ -47,7 +47,7 @@
       </div>
     </section>
     <section class="grid-item attendence">
-      <div class="section-in-area active">
+      <div class="section-in-area">
         <div class="font-weight-bold">
           ATTENDEE
           <img (click)="refreshAttendee()" [@rotatedState]='state' style="width: 20px; float: right; cursor: pointer;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAABb0lEQVRIibXWsUocURTG8Z9iNJKwgmCKxCwBQfAB8gJpoi9gYxWwsBZClFTp0gTSZG3TWK1NWkkjRtBCGxsLC1MmCKJsQoqFtZiBzF7vOndw/GCKOZzv/O+cuffMkKYm3uI7DjGf6EvWOD7hH3o4xYu6IU9wkAN66GC2bsgo9gqQnqx1tetDALnC47ohk7gMQF/vWnQ4EltEI4jt3gfodSR2lFCrIduh4SIH6lR/23p4WuIZwlae+y2/L1UnAnpY4lkP8tdiSWeRwrddJ4H/FbpBTjeP92mpIuhNwfscvwfknYtMkVYi5EvB8wA/SvIPMKaiaT8wbSQurhU+1TR+JbbhLu1G+ov9WRF0HILItmYx6V0sqaBHkcKXJR5kh60t/fA1I6DwCAxUA5+ljZOXEVA7FVRFKxHQ8n2ANgPIBSbqhky4ORvf1w2RFy1CdjBSN2QOfwqQPUzVDZnxf+r/xUfln5LKWpD9RG5jFc9STNcd5ctAsHT2EwAAAABJRU5ErkJggg==">
@@ -66,7 +66,7 @@
         </div>
       </div>
     </section>
-    <section class="grid-item upcoming" [@appearDown]>
+    <section class="grid-item upcoming">
       <div class="section-in-area">
         <div class="grid-section-content">
           <div class="next-class-label">Teacher Profile </div>
@@ -107,11 +107,14 @@
       </div>
     </section>
 
-    <section class="grid-item assessment" [@appearDown]>
-      <iframe src="https://deveshmantra.github.io/quml_player/index.html" width="100%" height="100%"></iframe>
+    <section class="grid-item assessment">
+      <div class="section-in-area">
+        <div class="leaderboard-title">Assessment</div>
+      <iframe src="https://deveshmantra.github.io/quml_player/index.html" width="100%" border="0" height="100%"></iframe>
+      </div>
     </section>
 
-    <section class="grid-item leaderboard" [@appearDown]>
+    <section class="grid-item leaderboard">
       <!-- grid-item--selected -->
       <div class="section-in-area">
         <div class="leaderboard-title">

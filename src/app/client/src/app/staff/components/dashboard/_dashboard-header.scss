@@ -3,10 +3,10 @@
 .header {
   position: fixed;
   z-index: 4;
-  min-height: 6rem;
+  min-height: 5rem;
   width: 100%;
-  background: #010035;
-
+  background: #040942;
+  padding:0px 0px 0px 1rem;
   @include respond-below(sm) {
     flex-wrap: wrap;
   }
