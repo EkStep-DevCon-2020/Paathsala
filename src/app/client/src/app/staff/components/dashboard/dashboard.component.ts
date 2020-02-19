@@ -28,7 +28,7 @@ const ClassMap =  {
     SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, APPEAR_SIDE, CARD_ANIMATION,
     trigger('rotatedState', [
       state('default', style({ transform: 'rotate(0)' })),
-      state('rotated', style({ transform: 'rotate(360deg)' })),
+      state('rotated', style({ transform: 'rotate(-360deg)' })),
       transition('default => rotated', animate('1500ms ease-in'))
   ])
   ]
@@ -244,7 +244,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public refreshAttendee() {
     this.state = 'rotated';
     this.getAttendence(this.teacherProfile.sessionId).subscribe(data => {
-      this.attendenceList = data[0];
+      this.attendenceList = data;
     });
     setTimeout(() => {
       this.state = 'default';
@@ -253,6 +253,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   public refreshAssessment() {
     this.state2 = 'rotated';
+    this.getAssessmentScore(this.teacherProfile.sessionId).subscribe(data => {
+      this.assessmentScore = data;
+    });
     setTimeout(() => {
       this.state2 = 'default';
     }, 1500);
