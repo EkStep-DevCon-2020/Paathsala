@@ -11,14 +11,19 @@ import { DataService } from './service/data.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { TelemetryService } from './service/telemetry.service';
+import { QrcodepopupComponent } from './components/qrcodepopup/qrcodepopup.component';
+import { SuiModalModule } from 'ng2-semantic-ui';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent],
+  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent, QrcodepopupComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     StaffRoutingModule,
     FullCalendarModule,
+    SuiModalModule,
+    FormsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

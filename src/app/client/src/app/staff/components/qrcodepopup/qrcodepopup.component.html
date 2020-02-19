@@ -1,0 +1,14 @@
+<sui-modal [mustScroll]="true" [isClosable]="false" [transitionDuration]="0" [size]="'normal'"
+class="sb-modal" appBodyScroll (dismissed)="showModal = !showModal;" #modal>
+<div class="sb-modal-content">
+  <div class="qr-code">
+    <div class="input-container">
+      <input class="input-field" [(ngModel)]="enteredQrCode" type="text" placeholder="Enter your QR Code" name="qr-code">
+      <span (click)="handleQRCode()" class="icon"></span>
+    </div>
+    <div style="color: red;">
+      {{errormsg}}
+    </div>
+  </div>
+</div>
+</sui-modal>

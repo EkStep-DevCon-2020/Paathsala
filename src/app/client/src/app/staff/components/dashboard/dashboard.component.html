@@ -1,5 +1,6 @@
 <app-side-menu></app-side-menu>
-<div class="st-dashboard">
+<app-qrcodepopup *ngIf="showPopup"></app-qrcodepopup>
+<div class="st-dashboard" *ngIf="!showPopup">
   <section class="header">
     <div class="header-area">
       <div>

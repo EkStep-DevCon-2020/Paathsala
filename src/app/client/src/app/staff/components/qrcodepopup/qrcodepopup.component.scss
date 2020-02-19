@@ -1,0 +1,43 @@
+.qr-code{
+    margin: auto;
+    text-align: center;
+    width: 250px;
+    img{
+      padding: 1em;
+      width: 100%;
+      width: 250px;
+      height: 250px;
+      border: 1px solid #666666;
+      background: #fff;
+    }
+    .input-container{
+      display: flex;
+      display: -ms-flexbox;
+      margin: 1.5em 0;
+      height: 2.5em;
+      width: 100%;
+      .icon::before{
+        content: "\2192";
+        font-size: 1.5em;
+      }
+      .icon {
+        background: #3A0C77;
+        color: #fff;
+        text-align: center;
+        cursor: pointer;
+        width: 20%;
+        height: 2.5em;
+        line-height: 2.2em;
+        margin: 0;
+      }
+      .input-field {
+        width: 100%;
+        padding: 0 0.6em;
+        outline: none;
+        font-size: 1.2em;
+        line-height: 2.6em;
+        color: #575757;
+        border: 1px solid #707070;
+       }
+    }
+  }
