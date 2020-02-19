@@ -1,0 +1,128 @@
+/* class room teacher lesson info */
+/* header */
+.header {
+  position: fixed;
+  z-index: 4;
+  min-height: 6rem;
+  width: 100%;
+  background: #010035;
+
+  @include respond-below(sm) {
+    flex-wrap: wrap;
+  }
+
+  .header-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // padding: 1.5rem 1rem 1.5rem 1rem;
+    width: 100%;
+
+    .brand {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      .page-title {
+        font-size: 1rem;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+        letter-spacing: 0.25rem;
+        margin: 0px 1.5rem;
+      }
+    }
+
+    div.nav {
+      ul {
+        margin: 0px;
+
+        li {
+          display: inline-flex;
+
+          a {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.125rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+
+            &:hover,
+            &:active,
+            &.active {
+              background: var(--black);
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .header-content {
+      display: flex;
+      color: #fff;
+
+      .current-chapter-content {
+        display: flex;
+        margin: 0 1.5rem;
+        align-items: center;
+        font-size: 0.875rem;
+
+        .current-chapter-text {
+          margin: 0 1rem;
+
+          .chapter-separator {
+            border-bottom: calculateRem(1px) solid #848484;
+            margin: 0.5rem 0;
+          }
+        }
+      }
+
+      .header-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .start-btn {
+          height: 2.5rem;
+          background: #F3CA3F 0% 0% no-repeat padding-box;
+          box-shadow: 0px calculateRem(3px) calculateRem(6px) #00000029;
+          border-radius: 0.25rem;
+          border: none;
+          width: calculateRem(120px);
+          font-size: 0.875rem;
+        }
+      }
+    }
+
+    [type="date"] {
+      background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+    }
+
+    [type="date"]::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    [type="date"]::-webkit-calendar-picker-indicator {
+      opacity: 0;
+    }
+
+    .date-label {
+      display: block;
+      color: #848484;
+      font-size: 0.875rem;
+    }
+
+    .date-input {
+      border: 0.0625rem solid #DCDCDC;
+      border-radius: 0.25rem;
+      background-color: #fff;
+      padding: 0.25rem;
+      width: calculateRem(190px);
+      color: #848484;
+      font-size: 0.875rem;
+      height: 1.75rem;
+    }
+  }
+}

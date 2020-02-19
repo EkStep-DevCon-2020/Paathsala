@@ -252,7 +252,7 @@ app-workspace {
 }
 .fc-event, .fc-event-dot {
   background: var( --devcon-secondary-color);
-  color: white !important;
+  color: var( --devcon-primary-color) !important;
 }
 .fc-time-grid .fc-slats td {
   height: 2.5em;
@@ -262,7 +262,7 @@ app-workspace {
 }
 .fc-ltr .fc-axis {
   background: var( --devcon-primary-color);
-  color: #CCC;
+  color: var( --devcon-secondary-color);
 }
 //.fc-unthemed td.fc-today {
   //background: #7c7b7b;

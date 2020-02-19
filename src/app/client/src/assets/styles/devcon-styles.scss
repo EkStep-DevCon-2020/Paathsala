@@ -13,8 +13,8 @@ html {
 body {
   min-height: 100%;
   font-family: var(--font-stack-en);
-  background-color: var(--devcon-bg);
-  background: var(--devcon-bg-img) no-repeat center !important;
+  // background-color: var(--devcon-bg);
+  // background: var(--devcon-bg-img) no-repeat center !important;
   background-size: cover;
   background-repeat: repeat-y;
   padding:0px 0px 0px 0px !important;
@@ -45,11 +45,16 @@ section {
 
 /* header */
 .header {
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  background: #010035;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding:0.5rem 1rem 0.5rem 3rem;
-  height: 5rem;
+  min-height: 6rem;
+  
   .brand {
     cursor: pointer;
   }
@@ -128,7 +133,7 @@ nav {
 
 #menuToggle a {
   text-decoration: none;
-  color: #232323;
+  color: var( --devcon-primary-color);
   padding: 1rem;
   letter-spacing: 0.25rem;
   border-bottom:1px solid #c38f06;
@@ -225,6 +230,7 @@ nav {
   padding-top: 5rem;
 
   background: var(--devcon-secondary-color);
+  color: var(--devcon-primary-color);
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
