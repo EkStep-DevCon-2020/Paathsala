@@ -52,10 +52,11 @@
         <div class="attendance-pills-container">
           <div class="d-flex attendance-pills-image">
             <div class="text-center fsmall font-weight-bold pb-16" *ngFor="let attendee of attendenceList">
-              <div class="mx-8"><img alt="{{attendee?.edata?.name}}" src="{{attendee?.edata?.profileUrl}}" title=""
+              <div class="mx-8"><img alt="{{attendee?.event?.profileName}}" src="{{attendee?.event?.edata_profile_url}}"
+                                     title=""
                                      class="student-img">
               </div>
-              <div class="pt-8">{{attendee?.edata?.name}}</div>
+              <div class="pt-8">{{attendee?.event?.profileName}}</div>
             </div>
 
           </div>
