@@ -6,6 +6,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ToasterService} from '@sunbird/shared';
 import {forkJoin, observable} from 'rxjs';
 import {ConfigService} from '../../../config/config.service';
+import {trigger, state, style, animate, transition} from '@angular/animations';
 
 const ClassMap =  {
   '01' : 'Class 1',
@@ -24,7 +25,12 @@ const ClassMap =  {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   animations: [
-    SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, APPEAR_SIDE, CARD_ANIMATION
+    SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, APPEAR_SIDE, CARD_ANIMATION,
+    trigger('rotatedState', [
+      state('default', style({ transform: 'rotate(0)' })),
+      state('rotated', style({ transform: 'rotate(-360deg)' })),
+      transition('default => rotated', animate('1500ms ease-in'))
+  ])
   ]
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
@@ -33,7 +39,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   timeTable: any;
   loggedIn = false;
   attendenceList: any;
-
+  assessmentScore: any;
+  state = 'default';
+  state2 = 'default';
   public classname: any;
   constructor(private dataService: DataService, public activatedRoute: ActivatedRoute, public router: Router,
               public toasterService: ToasterService, public configService: ConfigService) {
@@ -161,25 +169,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
       }
     }).pipe(map((res: any) => {
-      return [
-        {
-          'eid': 'DC_ATTEND',
-          'ets': 1.582108972974E12,
-          'did': '5951a18697b3fd79cdaade314c68d8872f70cfd7',
-          'profileId': '1-c3c0b911-5028-4d6b-b525-9ee943eac0cd',
-          'stallId': 'STA2',
-          'ideaId': 'IDE9',
-          'sid': '08021717',
-          'edata': {
-            'profileUrl': 'https://devcon2020.blob.core.windows.net/user/profile/File-01296063808148275285.png',
-            'name': 'Test',
-            'osid': '1-c3c0b911-5028-4d6b-b525-9ee943eac0cd'
-          },
-          'syncts': 1582109022835,
-          '@timestamp': '2020-02-19T10:43:42.835Z'
-        }
-      ];
-      // return res.result.attendenceList;
+      return res || [];
+    }));
+  }
+
+  getAssessmentScore(sessionId) {
+    return this.dataService.getData('https://devcon.sunbirded.org/api/period/v3/assessment/' + sessionId, {
+      headers: {
+        'Content-Type': 'application/json',
+        // tslint:disable-next-line:max-line-length
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
+      }
+    }).pipe(map((res: any) => {
+      return res || [];
     }));
   }
 
@@ -188,10 +190,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     let timetableData: any;
     requests.push(this.getAttendence(sessionId));
     requests.push(this.getTimeTable(sessionId));
+    requests.push(this.getAssessmentScore(sessionId));
     forkJoin(requests).subscribe(data => {
       console.log(data[0]);
       this.attendenceList = data[0];
       timetableData = data[1];
+      this.assessmentScore = data[2];
       const teacherList = this.dataService.getTeacherData();
       timetableData.forEach((periodData, index) => {
         const hour = parseInt(periodData.sessionId.slice(-2));
@@ -235,5 +239,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.toasterService.error('Error Loading data Please try again Later');
       console.log('timetable fetching', error);
     });
+  }
+
+  public refreshAttendee() {
+    this.state = 'rotated';
+    this.getAttendence(this.teacherProfile.sessionId).subscribe(data => {
+      this.attendenceList = data;
+    });
+    setTimeout(() => {
+      this.state = 'default';
+    }, 1500);
+  }
+
+  public refreshAssessment() {
+    this.state2 = 'rotated';
+    this.getAssessmentScore(this.teacherProfile.sessionId).subscribe(data => {
+      this.assessmentScore = data;
+    });
+    setTimeout(() => {
+      this.state2 = 'default';
+    }, 1500);
   }
 }
