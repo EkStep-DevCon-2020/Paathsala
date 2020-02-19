@@ -161,25 +161,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
       }
     }).pipe(map((res: any) => {
-      return [
-        {
-          'eid': 'DC_ATTEND',
-          'ets': 1.582108972974E12,
-          'did': '5951a18697b3fd79cdaade314c68d8872f70cfd7',
-          'profileId': '1-c3c0b911-5028-4d6b-b525-9ee943eac0cd',
-          'stallId': 'STA2',
-          'ideaId': 'IDE9',
-          'sid': '08021717',
-          'edata': {
-            'profileUrl': 'https://devcon2020.blob.core.windows.net/user/profile/File-01296063808148275285.png',
-            'name': 'Test',
-            'osid': '1-c3c0b911-5028-4d6b-b525-9ee943eac0cd'
-          },
-          'syncts': 1582109022835,
-          '@timestamp': '2020-02-19T10:43:42.835Z'
-        }
-      ];
-      // return res.result.attendenceList;
+      if (res && res.result && res.result.attendenceList) {
+        return res && res.result && res.result.attendenceList
+      } else {
+        return [];
+      }
     }));
   }
 
