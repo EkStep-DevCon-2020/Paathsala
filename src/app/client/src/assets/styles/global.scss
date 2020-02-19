@@ -251,8 +251,8 @@ app-workspace {
   border-top-style: unset !important;
 }
 .fc-event, .fc-event-dot {
-  background: var( --devcon-secondary-color);
-  color: var( --devcon-primary-color) !important;
+  background: var( --devcon-primary-color);
+  color: var( --devcon-secondary-color) !important;
 }
 .fc-time-grid .fc-slats td {
   height: 2.5em;
