@@ -48,7 +48,10 @@
     </section>
     <section class="grid-item attendence">
       <div class="section-in-area active">
-        <div class="font-weight-bold">ATTENDEE</div>
+        <div class="font-weight-bold">
+          ATTENDEE
+          <img (click)="refreshAttendee()" [@rotatedState]='state' style="width: 20px; float: right; cursor: pointer;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAABb0lEQVRIibXWsUocURTG8Z9iNJKwgmCKxCwBQfAB8gJpoi9gYxWwsBZClFTp0gTSZG3TWK1NWkkjRtBCGxsLC1MmCKJsQoqFtZiBzF7vOndw/GCKOZzv/O+cuffMkKYm3uI7DjGf6EvWOD7hH3o4xYu6IU9wkAN66GC2bsgo9gqQnqx1tetDALnC47ohk7gMQF/vWnQ4EltEI4jt3gfodSR2lFCrIduh4SIH6lR/23p4WuIZwlae+y2/L1UnAnpY4lkP8tdiSWeRwrddJ4H/FbpBTjeP92mpIuhNwfscvwfknYtMkVYi5EvB8wA/SvIPMKaiaT8wbSQurhU+1TR+JbbhLu1G+ov9WRF0HILItmYx6V0sqaBHkcKXJR5kh60t/fA1I6DwCAxUA5+ljZOXEVA7FVRFKxHQ8n2ANgPIBSbqhky4ORvf1w2RFy1CdjBSN2QOfwqQPUzVDZnxf+r/xUfln5LKWpD9RG5jFc9STNcd5ctAsHT2EwAAAABJRU5ErkJggg==">
+        </div>
         <div class="attendance-pills-container">
           <div class="d-flex attendance-pills-image">
             <div class="text-center fsmall font-weight-bold pb-16" *ngFor="let attendee of attendenceList">
@@ -111,7 +114,10 @@
     <section class="grid-item leaderboard" [@appearDown]>
       <!-- grid-item--selected -->
       <div class="section-in-area">
-        <div class="leaderboard-title">Assessment Leader Board</div>
+        <div class="leaderboard-title">
+          Assessment Leader Board
+          <img (click)="refreshAssessment()" [@rotatedState]='state2' style="width: 20px; float: right; cursor: pointer;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAABb0lEQVRIibXWsUocURTG8Z9iNJKwgmCKxCwBQfAB8gJpoi9gYxWwsBZClFTp0gTSZG3TWK1NWkkjRtBCGxsLC1MmCKJsQoqFtZiBzF7vOndw/GCKOZzv/O+cuffMkKYm3uI7DjGf6EvWOD7hH3o4xYu6IU9wkAN66GC2bsgo9gqQnqx1tetDALnC47ohk7gMQF/vWnQ4EltEI4jt3gfodSR2lFCrIduh4SIH6lR/23p4WuIZwlae+y2/L1UnAnpY4lkP8tdiSWeRwrddJ4H/FbpBTjeP92mpIuhNwfscvwfknYtMkVYi5EvB8wA/SvIPMKaiaT8wbSQurhU+1TR+JbbhLu1G+ov9WRF0HILItmYx6V0sqaBHkcKXJR5kh60t/fA1I6DwCAxUA5+ljZOXEVA7FVRFKxHQ8n2ANgPIBSbqhky4ORvf1w2RFy1CdjBSN2QOfwqQPUzVDZnxf+r/xUfln5LKWpD9RG5jFc9STNcd5ctAsHT2EwAAAABJRU5ErkJggg==">
+        </div>
         <div class="leaderboard-content-container">
           <div class="leaderboard-content">
             <div class="card-leaderboard-content first">
