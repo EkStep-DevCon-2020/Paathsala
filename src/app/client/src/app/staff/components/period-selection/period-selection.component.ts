@@ -42,7 +42,7 @@ export class PeriodSelectionComponent implements OnInit {
   profileInfo = {};
   constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService, public configService: ConfigService){ 
     if(!this.configService.userInfo){
-      this.router.navigate(['']);
+      this.router.navigate(['staff']);
     }
   }
   ngOnInit() {

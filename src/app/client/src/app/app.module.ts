@@ -18,7 +18,6 @@ import { CacheSessionStorage } from 'ng2-cache-service/dist/src/services/storage
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { PluginModules } from './framework.config';
 import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
-import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrincipleDashboardComponent } from './principle-dashboard/principle-dashboard.component';
 import { PrincipleDashboardClassViewComponent } from './principle-dashboard-class-view/principle-dashboard-class-view.component';
@@ -28,7 +27,6 @@ import { PrincipleDashboardTeacherViewComponent } from './principle-dashboard-te
   declarations: [
     AppComponent,
     ProfileSummaryComponent,
-    LoginComponent,
     PrincipleDashboardComponent,
     PrincipleDashboardClassViewComponent,
     PrincipleDashboardTeacherViewComponent

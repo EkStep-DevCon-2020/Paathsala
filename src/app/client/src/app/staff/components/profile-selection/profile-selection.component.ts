@@ -19,7 +19,7 @@ export class ProfileSelectionComponent implements OnInit {
 
   constructor(private dataService: DataService, public router: Router, public configService: ConfigService) {
     if(!this.configService.userInfo){
-      this.router.navigate(['']);
+      this.router.navigate(['staff']);
     }
   }
 

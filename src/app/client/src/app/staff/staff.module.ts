@@ -11,10 +11,13 @@ import { DataService } from './service/data.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { TelemetryService } from './service/telemetry.service';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent],
+  declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent, LoginComponent],
   imports: [
+    FormsModule,
     CommonModule,
     HttpClientModule,
     StaffRoutingModule,
