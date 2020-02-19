@@ -84,7 +84,7 @@ export class TocPageComponent implements OnInit, OnDestroy {
     private offlineCardService: OfflineCardService,
     private telemetryService: TelemetryService) { 
       if(!this.configService.userInfo){
-        // this.router.navigate(['staff']);
+        this.router.navigate(['staff']);
       }
       console.log('this.configService.userInfo', this.configService.userInfo, this.configService.teacherInfo);
     }
