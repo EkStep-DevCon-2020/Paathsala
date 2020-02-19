@@ -36,6 +36,7 @@ export class ProfileSelectionComponent implements OnInit {
     this.dataService.post('https://devcon.sunbirded.org/action/composite/v3/search', body, { headers: {'Content-Type': 'application/json'}})
     .subscribe((data: any) => {
         console.log(data);
+        this.dataService.setTeacherData(data.result.Teacher);
         this.teacherList = data.result.Teacher;
       },
       error => {
