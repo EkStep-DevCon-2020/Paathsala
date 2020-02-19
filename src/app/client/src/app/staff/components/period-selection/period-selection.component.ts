@@ -69,6 +69,8 @@ export class PeriodSelectionComponent implements OnInit {
         }
         if(event.start.getTime() < today.getTime()){
           event.backgroundColor = completedClassColor;
+          event.classNames = ["sylCompleted"];
+          event.title = event.title;
         } else if(event.start.getHours() === today.getHours() && event.start.getDate() === today.getDate()){
           event.backgroundColor = ongoingClassColor;
         } else {
