@@ -113,71 +113,23 @@
       <div class="section-in-area">
         <div class="leaderboard-title">Assessment Leader Board</div>
         <div class="leaderboard-content-container">
-          <div class="leaderboard-content">
-            <div class="card-leaderboard-content first">
-              <div class="leaderboard-serial-content">
-                <div class="serial-no-content first">
-                  <span class="serial-no-text">1</span>
-                </div>
-              </div>
-              <div class="d-flex flex-dc w-100 leaderboard-text">
-                <div class="ml-16">Student Name </div>
-                <div class="d-flex flex-jc-space-between flex-ai-center">
-                  <div class="ml-16">L 8/10</div>
-                  <div class="ml-16 my-4">90sec</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="leaderboard-content ">
+
+          <div class="leaderboard-content" *ngFor="let assessment of assessmentScore; let i =index">
             <div class="card-leaderboard-content second">
               <div class="leaderboard-serial-content">
                 <div class="serial-no-content second">
-                  <span class="serial-no-text">1</span>
+                  <span class="serial-no-text">{{i + 1}}</span>
                 </div>
               </div>
               <div class="d-flex flex-dc w-100 leaderboard-text">
-                <div class="ml-16">Student Name </div>
+                <div class="ml-16">{{assessment?.event?.profileName}}</div>
                 <div class="d-flex flex-jc-space-between flex-ai-center">
-                  <div class="ml-16">L 8/10</div>
-                  <div class="ml-16 my-4">90sec</div>
+                  <div class="ml-16"> {{assessment?.event?.score}}/10</div>
+                  <div class="ml-16 my-4">{{assessment?.event?.duration}}sec</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="leaderboard-content ">
-            <div class="card-leaderboard-content third">
-              <div class="leaderboard-serial-content">
-                <div class="serial-no-content third">
-                  <span class="serial-no-text">1</span>
-                </div>
-              </div>
-              <div class="d-flex flex-dc w-100 leaderboard-text">
-                <div class="ml-16">Student Name </div>
-                <div class="d-flex flex-jc-space-between flex-ai-center">
-                  <div class="ml-16">L 8/10</div>
-                  <div class="ml-16 my-4">90sec</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="leaderboard-content">
-            <div class="card-leaderboard-content">
-              <div class="leaderboard-serial-content">
-                <div class="serial-no-content">
-                  <span class="serial-no-text">1</span>
-                </div>
-              </div>
-              <div class="d-flex flex-dc w-100 leaderboard-text">
-                <div class="ml-16">Student Name </div>
-                <div class="d-flex flex-jc-space-between flex-ai-center">
-                  <div class="ml-16">L 8/10</div>
-                  <div class="ml-16 my-4">90sec</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
