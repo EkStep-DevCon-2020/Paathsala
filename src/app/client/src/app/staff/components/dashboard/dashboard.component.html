@@ -23,7 +23,7 @@
             <div class="fsmall">Medium</div>
           </div>
         </div>
-        <div class="header-btn"><button type="button" class="start-btn">Lets Start</button></div>
+        <div class="header-btn"><button type="button" class="start-btn" (click)="redirectToToc()">Lets Start</button></div>
       </div>
     </div>
     <!-- <div class="nav">
@@ -70,9 +70,9 @@
         <div class="grid-next-class-content">
           <div><img alt="{{teacherProfile?.name}}" src="{{teacherProfile?.avatar}}" width="72px" height="72px"></div>
           <div class="d-block mx-8">
-            <div class="grid-class-text sb__ellipsis sb__ellipsis--two">Teacher's Professional Development Programme</div>
-            <div class="divider"></div>
-            <div class="grid-class-text sb__ellipsis sb__ellipsis--two">English | Class 4, Section A |</div>
+            {{teacherProfile?.name}}
+            <div class="grid-class-text sb__ellipsis sb__ellipsis--two">{{teacherProfile?.subject}}
+              | {{ classname }}</div>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from  "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
+  teacherList: any;
   constructor(private httpClient: HttpClient) { }
 
   public getData(url: any, options = {}): Observable < any > {
@@ -15,5 +15,9 @@ export class DataService {
 
   public post(url, body, httpOptions){
     return this.httpClient.post(url, body, httpOptions);
+  }
+
+  public setTeacherData(teacherList) {
+    this.teacherList = teacherList;
   }
 }
