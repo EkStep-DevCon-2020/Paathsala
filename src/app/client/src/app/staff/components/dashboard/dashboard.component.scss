@@ -25,7 +25,7 @@
 @include respond-above(md) {
   .dashboard-grid {
     grid-template-columns: minmax(auto, 30%) minmax(auto, 20%) minmax(auto, 20%) minmax(auto, 30%);
-    grid-template-rows: 9rem 12rem auto auto;
+    grid-template-rows: 9rem 6rem auto auto;
   }
 
   .attendence {
