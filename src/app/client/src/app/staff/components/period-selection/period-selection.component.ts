@@ -81,5 +81,4 @@ export class PeriodSelectionComponent implements OnInit {
     console.log(arg.event.id, arg.event.title, arg.event.extendedProps.sessionId);
     this.router.navigate(['play/collection/' + arg.event.id]);
   }
-
 }

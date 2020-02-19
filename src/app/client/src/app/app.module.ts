@@ -20,12 +20,14 @@ import { PluginModules } from './framework.config';
 import { ProfileSummaryComponent } from './profile-summary/profile-summary.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrincipleDashboardComponent } from './principle-dashboard/principle-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileSummaryComponent,
-    LoginComponent
+    LoginComponent,
+    PrincipleDashboardComponent
   ],
   imports: [
     BrowserAnimationsModule, // used this instaed of browser module since it includes in it.
