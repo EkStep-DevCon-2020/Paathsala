@@ -6,7 +6,7 @@ const routes: Routes = [
   {path: 'dashboard/:sessionId', component: DashboardComponent, pathMatch: 'full'},
   {path: 'profile/selection', component: ProfileSelectionComponent},
   {path: 'period/selection/:id', component: PeriodSelectionComponent, pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent, pathMatch: 'full'}
+  {path: 'dashboard/:qrCode', component: DashboardComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

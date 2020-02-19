@@ -18,7 +18,7 @@ const appRoutes: Routes = [
     path: '', component: LoginComponent
   },
   {
-    path: "profile-summary", component: ProfileSummaryComponent,
+    path: 'profile-summary', component: ProfileSummaryComponent,
   },
   {
     path: 'staff', loadChildren: 'app/staff/staff.module#StaffModule'
