@@ -23,10 +23,15 @@
     <section class="grid-item upcoming">
       <div class="section-in-area">
         <div class="grid-section-content">
-          <div class="next-class-label">Selected Teacher Name  </div>
+          <div class="next-class-label">{{profileInfo.name}}</div>
         </div>
         <div class="grid-next-class-content">
-          <h2>Put teacher full calendar here</h2>
+          <full-calendar #calendar defaultView="timeGridWeek" maxTime="16:00:00" minTime="09:00:00" [header]="{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'timeGridWeek,timeGridDay'
+          }" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents"
+            (eventClick)="handleEventClick($event)" [hiddenDays]="[0]" [allDaySlot]="false"></full-calendar>
         </div>
       </div>
     </section>
