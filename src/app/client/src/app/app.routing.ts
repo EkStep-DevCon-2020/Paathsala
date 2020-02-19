@@ -9,8 +9,9 @@ import { PrincipleDashboardTeacherViewComponent } from './principle-dashboard-te
 const appRoutes: Routes = [
   {
     path: 'principle/dashboard', component: PrincipleDashboardComponent, children: [
-      { path: 'class', component: PrincipleDashboardClassViewComponent },
-      { path: 'teacher', component: PrincipleDashboardTeacherViewComponent },
+      { path: '', redirectTo: 'class', pathMatch: 'full'},
+      { path: 'class', component: PrincipleDashboardClassViewComponent, pathMatch: 'full' },
+      { path: 'teacher', component: PrincipleDashboardTeacherViewComponent, pathMatch: 'full' },
     ]
   },
   {

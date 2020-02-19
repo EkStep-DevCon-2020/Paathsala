@@ -6,6 +6,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ToasterService} from '@sunbird/shared';
 import {forkJoin, observable} from 'rxjs';
 import {ConfigService} from '../../../config/config.service';
+import {trigger, state, style, animate, transition} from '@angular/animations';
 
 const ClassMap =  {
   '01' : 'Class 1',
@@ -24,7 +25,12 @@ const ClassMap =  {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   animations: [
-    SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, APPEAR_SIDE, CARD_ANIMATION
+    SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, APPEAR_SIDE, CARD_ANIMATION,
+    trigger('rotatedState', [
+      state('default', style({ transform: 'rotate(0)' })),
+      state('rotated', style({ transform: 'rotate(360deg)' })),
+      transition('default => rotated', animate('1500ms ease-in'))
+  ])
   ]
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
@@ -34,7 +40,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   loggedIn = false;
   attendenceList: any;
   assessmentScore: any;
-
+  state = 'default';
+  state2 = 'default';
   public classname: any;
   constructor(private dataService: DataService, public activatedRoute: ActivatedRoute, public router: Router,
               public toasterService: ToasterService, public configService: ConfigService) {
@@ -232,5 +239,22 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       this.toasterService.error('Error Loading data Please try again Later');
       console.log('timetable fetching', error);
     });
+  }
+
+  public refreshAttendee() {
+    this.state = 'rotated';
+    this.getAttendence(this.teacherProfile.sessionId).subscribe(data => {
+      this.attendenceList = data[0];
+    });
+    setTimeout(() => {
+      this.state = 'default';
+    }, 1500);
+  }
+
+  public refreshAssessment() {
+    this.state2 = 'rotated';
+    setTimeout(() => {
+      this.state2 = 'default';
+    }, 1500);
   }
 }

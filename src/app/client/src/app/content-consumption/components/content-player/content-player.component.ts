@@ -28,9 +28,9 @@ export class ContentPlayerComponent implements AfterViewInit, OnChanges, OnInit,
   contentRatingModal = false;
   previewCdnUrl: string;
   isCdnWorking: string;
-  @Input() isContentDeleted: Subject<any>;
+  // @Input() isContentDeleted: Subject<any>;
   contentDeleted = false;
-  @Input() isContentPresent = true;
+  // @Input() isContentPresent = true;
   @Input() objectRollUp: {} = {};
   isConnected: any;
   youTubeContentStatus: any;
@@ -68,11 +68,11 @@ export class ContentPlayerComponent implements AfterViewInit, OnChanges, OnInit,
   }
 
   ngOnChanges() {
-    if (this.isContentDeleted) {
-      this.isContentDeleted.subscribe(data => {
-        this.contentDeleted = data.value && !this.router.url.includes('browse');
-      });
-    }
+    // if (this.isContentDeleted) {
+    //   this.isContentDeleted.subscribe(data => {
+    //     this.contentDeleted = data.value && !this.router.url.includes('browse');
+    //   });
+    // }
     this.contentRatingModal = false;
     if (!_.isEmpty(this.playerConfig)) {
       this.objectRollUp = _.get(this.playerConfig, 'context.objectRollup') || {};

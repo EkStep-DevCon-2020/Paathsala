@@ -1,3 +1,40 @@
-<p>
-  principle-dashboard-teacher-view works!
-</p>
+<!-- <app-side-menu></app-side-menu> -->
+<div class="st-dashboard">
+
+
+  <div class="dashboard-grid scroll">
+    <section class="grid-item teacherList">
+      <div class="section-in-area class-selection-grid">
+        <div class="heading font-weight-bold">TEACHERS</div>
+        <div class="grid-section-content" [@cardAnimation]="teacherList?.length">
+          <div *ngFor="let teacher of teacherList"> 
+            <div class="teacher-list" [ngClass]="{'selected': teacher.selected}" (click)="toggleSelected(teacher)">
+              <img class="profile-pic" [src]="teacher.avatar" (error)="profilePic.src = defaultProfileImg" #profilePic>
+              <div class="text">
+                <div class="fnormal">{{teacher.name}} </div>
+                <div class="profile-separator"></div>
+                <div class="fsmall custom">{{ teacher.subject}} </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+    <section class="grid-item upcoming">
+      <div class="section-in-area">
+        <div class="grid-section-content">
+          <div class="next-class-label">{{profileInfo.name}}</div>
+        </div>
+        <div class="grid-next-class-content">
+          <full-calendar #calendar defaultView="timeGridWeek" maxTime="16:00:00" minTime="09:00:00" [header]="{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'timeGridWeek,timeGridDay'
+          }" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents"
+            (eventClick)="handleEventClick($event)" [hiddenDays]="[0]" [allDaySlot]="false"></full-calendar>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

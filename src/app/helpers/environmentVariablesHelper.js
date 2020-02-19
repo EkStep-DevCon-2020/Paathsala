@@ -4,8 +4,8 @@ const fs = require('fs')
 const packageObj = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 
 let envVariables = {
-  LEARNER_URL: env.sunbird_learner_player_url || 'https://staging.open-sunbird.org/api/',
-  CONTENT_URL: env.sunbird_content_player_url || 'https://staging.open-sunbird.org/api/',
+  LEARNER_URL: "https://devcon.sunbirded.org/api/" || env.sunbird_learner_player_url || 'https://staging.open-sunbird.org/api/',
+  CONTENT_URL: "https://devcon.sunbirded.org/api/" || env.sunbird_content_player_url || 'https://staging.open-sunbird.org/api/',
   CONFIG_URL: env.sunbird_config_service_url || 'https://staging.open-sunbird.org/api/config/',
   CONFIG_REFRESH_INTERVAL: env.config_refresh_interval || 10,
   CONFIG_SERVICE_ENABLED: env.config_service_enabled || false,

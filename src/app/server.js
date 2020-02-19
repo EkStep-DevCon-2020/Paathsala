@@ -146,13 +146,13 @@ function runApp() {
   app.all('*', (req, res) => res.redirect('/')) // redirect to home if nothing found
   // start server after building the configuration data and fetch default channel id
 
-  fetchDefaultChannelDetails((channelError, channelRes, channelData) => {
+  // fetchDefaultChannelDetails((channelError, channelRes, channelData) => {
     portal.server = app.listen(envHelper.PORTAL_PORT, () => {
-      envHelper.defaultChannelId = _.get(channelData, 'result.response.content[0].hashTagId'); // needs to be added in envVariable file
+      // envHelper.defaultChannelId = _.get(channelData, 'result.response.content[0].hashTagId'); // needs to be added in envVariable file
       logger.info({msg: `app running on port ${envHelper.PORTAL_PORT}`})
     })
     portal.server.keepAliveTimeout = 60000 * 5;
-  })
+  // })
 }
 const fetchDefaultChannelDetails = (callback) => {
   const options = {
