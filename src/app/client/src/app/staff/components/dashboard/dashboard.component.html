@@ -37,7 +37,7 @@
   </section>
 
   <div class="dashboard-grid scroll">
-    <section class="grid-item empty" [@appearDown]>
+    <section class="grid-item empty">
       <div class="section-in-area">
         <div class="grid-section-content">
           <div>{{ classname }}</div>
@@ -47,7 +47,7 @@
       </div>
     </section>
     <section class="grid-item attendence">
-      <div class="section-in-area active">
+      <div class="section-in-area">
         <div class="font-weight-bold">ATTENDEE</div>
         <div class="attendance-pills-container">
           <div class="d-flex attendance-pills-image">
@@ -62,7 +62,7 @@
         </div>
       </div>
     </section>
-    <section class="grid-item upcoming" [@appearDown]>
+    <section class="grid-item upcoming">
       <div class="section-in-area">
         <div class="grid-section-content">
           <div class="next-class-label">Teacher Profile </div>
@@ -103,11 +103,14 @@
       </div>
     </section>
 
-    <section class="grid-item assessment" [@appearDown]>
-      <iframe src="https://deveshmantra.github.io/quml_player/index.html" width="100%" height="100%"></iframe>
+    <section class="grid-item assessment">
+      <div class="section-in-area">
+        <div class="leaderboard-title">Assessment</div>
+      <iframe src="https://deveshmantra.github.io/quml_player/index.html" width="100%" border="0" height="100%"></iframe>
+      </div>
     </section>
 
-    <section class="grid-item leaderboard" [@appearDown]>
+    <section class="grid-item leaderboard">
       <!-- grid-item--selected -->
       <div class="section-in-area">
         <div class="leaderboard-title">Assessment Leader Board</div>

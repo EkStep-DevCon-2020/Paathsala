@@ -38,6 +38,7 @@
   .leaderboard {
     grid-column: 4;
     grid-row: 2/span 3;
+    overflow: auto;
   }
 
   .assessment {
@@ -47,7 +48,8 @@
 
   .timetable {
     // grid-column: 1 / span 2;
-    grid-row: 2/span 3;
+    grid-row: 2/span 3;overflow: auto;
+    overflow: auto;
   }
 }
 
