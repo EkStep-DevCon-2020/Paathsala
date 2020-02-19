@@ -6,7 +6,7 @@
   min-height: 5rem;
   width: 100%;
   background: #040942;
-  padding:0px 0px 0px 1rem;
+  padding:0px 1rem 0px 1rem;
   @include respond-below(sm) {
     flex-wrap: wrap;
   }
@@ -26,7 +26,7 @@
 
       .page-title {
         font-size: 1rem;
-        color: var(--secondary-color);
+        color: var(--devcon-secondary-color);
         text-transform: uppercase;
         letter-spacing: 0.25rem;
         margin: 0px 1.5rem;

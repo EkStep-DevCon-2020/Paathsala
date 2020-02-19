@@ -26,6 +26,7 @@
   .dashboard-grid {
     grid-template-columns: minmax(auto, 30%) minmax(auto, 20%) minmax(auto, 20%) minmax(auto, 30%);
     grid-template-rows: 9rem 6rem auto auto;
+    height:100vh;
   }
 
   .attendence {
