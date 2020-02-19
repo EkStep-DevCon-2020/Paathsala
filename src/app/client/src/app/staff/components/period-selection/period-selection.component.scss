@@ -67,6 +67,7 @@ body {
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        color: var(--black);
         .subject-pill {
           display: inline-block;
           border: 0.0615rem solid var(--yellow);
@@ -84,6 +85,7 @@ body {
     &:hover {
       .section-in-area {
         background: var(--yellow);
+        height: 100%;
         .img-container {
           border: 0.0625rem solid var(--blue);
           img {

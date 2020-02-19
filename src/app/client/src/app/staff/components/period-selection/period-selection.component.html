@@ -13,15 +13,36 @@
       <section class="staff-grid-item">
         <div class="section-in-area">
           <div class="img-container">
-            <img [src]="configService.userInfo?.photo || profileInfo.avatar" (error)="profilePic.src = defaultProfileImg" #profilePic>
+            <img [src]="configService.userInfo?.photo || profileInfo.avatar"
+              (error)="profilePic.src = defaultProfileImg" #profilePic>
           </div>
           <h4>{{configService.userInfo?.name ||profileInfo.name}}</h4>
           <div class="subjects-section">
             <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
                  {{sub}}
              </span> -->
-            <span class="subject-pill" *ngIf="profileInfo.subject">
+            Subjects: <span class="subject-pill" *ngIf="profileInfo.subject">
               {{profileInfo.subject}}
+            </span>
+          </div>
+          <div class="subjects-section">
+            <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
+                 {{sub}}
+             </span> -->
+            Class: <span class="subject-pill" *ngIf="profileInfo.subject">
+              Class - 08
+            </span> <span class="subject-pill" *ngIf="profileInfo.subject">
+              Class - 09
+            </span>
+          </div>
+          <div class="subjects-section">
+            <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
+                 {{sub}}
+             </span> -->
+            Medium: <span class="subject-pill" *ngIf="profileInfo.subject">
+              Hindi
+            </span> <span class="subject-pill" *ngIf="profileInfo.subject">
+              English
             </span>
           </div>
         </div>
