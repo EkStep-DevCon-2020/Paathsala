@@ -13,9 +13,9 @@ import { ConfigService } from '../../../config/config.service';
 const year = (new Date()).getFullYear();
 const currentDay = (new Date()).getDate();
 const currentHour = (new Date()).getHours()
-const completedClassColor = 'blue';
-const ongoingClassColor = 'yellow';
-const upcomingClassColor = '#010035';
+const completedClassColor = '#010035';
+const ongoingClassColor = '#613ad2';
+const upcomingClassColor = '#FFF';
 
 const ClassMap =  {
   "01" : "Class 1",

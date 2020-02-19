@@ -1,0 +1,77 @@
+@import './variables';
+@import './mixins/mixins';
+@import '../staff/components/dashboard/dashboard-card';
+@import '../staff/components/dashboard/dashboard-header';
+
+.st-dashboard {
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #010035, rgb(5, 16, 77));
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  color: #444;
+  justify-items: stretch;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  // height: calc(100vh - 5rem);
+  padding: 7rem 2rem 2rem 2rem;
+  z-index: 3;
+}
+
+.class-selection-grid{
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    justify-content: stretch;
+    flex-direction: column;
+    .heading{
+        flex: 1 1 auto;
+    }
+    .grid-section-content{
+        flex-direction: column;
+        flex: 1 1 auto;
+        select {
+            padding: 8px;
+        }
+    }
+    
+}
+
+@include respond-above(md) {
+  .dashboard-grid {
+    grid-template-columns: minmax(auto, 30%) minmax(auto, 20%) minmax(auto, 20%) minmax(auto, 30%);
+    grid-template-rows: 9rem 12rem auto auto;
+  }
+
+  .attendence {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 2;
+  }
+
+  .empty {}
+
+  .leaderboard {
+    grid-column: 4;
+    grid-row: 2/span 3;
+  }
+
+  .assessment {
+    grid-column: 2/span 2;
+    grid-row: 3/span 2;
+  }
+
+  .timetable {
+    // grid-column: 1 / span 2;
+    grid-row: 2/span 3;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 1132px) {
+  .dashboard-grid {
+    padding: 10rem 2rem 2rem 2rem;
+  }
+}
