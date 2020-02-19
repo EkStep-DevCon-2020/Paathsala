@@ -13,10 +13,10 @@ import * as _ from "lodash";
 export class PrincipleDashboardClassViewComponent implements OnInit {
 
   constructor(private dataService: DataService,) { }
-  timeTable = [];
+  timeTableList = [];
   periodToProfileMap = {};
   ngOnInit() {
-    this.populateTimeTable("09");
+    this.populateTimeTable("08");
   }
   handleClassChange(event){
     console.log("class", event.target.value);
@@ -70,9 +70,26 @@ export class PrincipleDashboardClassViewComponent implements OnInit {
       console.log("==profileData==", profileData);
       return this.getTimeTableForClass(classId)
     }))
-    .subscribe(data => {
-      this.timeTable = data;
-      console.log("class period data", data);
+    .subscribe(timeTableOfClass => {
+      this.timeTableList = _.sortBy(_.map(timeTableOfClass, (timeTable) => {
+        if(this.periodToProfileMap[timeTable.identifier]){
+          timeTable.profile = this.periodToProfileMap[timeTable.identifier];
+        }
+        const sessionIdArray = timeTable.sessionId.match(/.{1,2}/g);
+        const sessionIdMap = {
+          class: sessionIdArray[0],
+          month: parseInt(sessionIdArray[1]),
+          day: parseInt(sessionIdArray[2]),
+          hour: parseInt(sessionIdArray[3])
+        }
+        timeTable.start = sessionIdMap.hour + ":00";
+        timeTable.end = (sessionIdMap.hour + 1) + ":00";
+        return timeTable;
+      }), ['sessionId']);
+      this.timeTableList.reverse();
+      console.log(this.timeTableList)
+    }, error => {
+      console.log("fetching time table failed", error);
     });
   }
 }
