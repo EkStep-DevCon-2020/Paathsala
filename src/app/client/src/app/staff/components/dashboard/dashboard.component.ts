@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   timeTable: any;
   loggedIn = false;
   attendenceList: any;
+  assessmentScore: any;
   state = 'default';
   state2 = 'default';
   public classname: any;
@@ -172,15 +173,29 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }));
   }
 
+  getAssessmentScore(sessionId) {
+    return this.dataService.getData('https://devcon.sunbirded.org/api/period/v3/assessment/' + sessionId, {
+      headers: {
+        'Content-Type': 'application/json',
+        // tslint:disable-next-line:max-line-length
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
+      }
+    }).pipe(map((res: any) => {
+      return res || [];
+    }));
+  }
+
   setDashboardData(sessionId) {
     const requests = [];
     let timetableData: any;
     requests.push(this.getAttendence(sessionId));
     requests.push(this.getTimeTable(sessionId));
+    requests.push(this.getAssessmentScore(sessionId));
     forkJoin(requests).subscribe(data => {
       console.log(data[0]);
       this.attendenceList = data[0];
       timetableData = data[1];
+      this.assessmentScore = data[2];
       const teacherList = this.dataService.getTeacherData();
       timetableData.forEach((periodData, index) => {
         const hour = parseInt(periodData.sessionId.slice(-2));
