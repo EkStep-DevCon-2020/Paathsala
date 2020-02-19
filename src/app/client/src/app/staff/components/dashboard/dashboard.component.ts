@@ -154,7 +154,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getAttendence(sessionId) {
-    return this.dataService.getData('https://devcon.sunbirded.org/api/teacher/v3/user/profile/ABC123415', {
+    return this.dataService.getData('https://devcon.sunbirded.org/api/period/v3/attendance/' + sessionId, {
       headers: {
         'Content-Type': 'application/json',
         // tslint:disable-next-line:max-line-length
@@ -185,16 +185,43 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   setDashboardData(sessionId) {
     const requests = [];
+    let timetableData: any;
     requests.push(this.getAttendence(sessionId));
+    requests.push(this.getTimeTable(sessionId));
     forkJoin(requests).subscribe(data => {
       console.log(data[0]);
       this.attendenceList = data[0];
+      timetableData = data[1];
+      const teacherList = this.dataService.getTeacherData();
+      timetableData.forEach((periodData, index) => {
+        const hour = parseInt(periodData.sessionId.slice(-2));
+        timetableData[index].startTime = hour;
+        timetableData[index].endTime = hour + 1;
+        teacherList.forEach(teacherData => {
+          if (teacherData.periods.indexOf(periodData.identifier) !== -1) {
+            timetableData[index].name = teacherData.name;
+            timetableData[index].avatar = teacherData.avatar;
+          }
+        });
+      });
+      timetableData.sort(this.getSortOrder('startTime'));
+      this.timeTable = timetableData;
     }, error => {
       this.toasterService.error('Error Loading data Please try again Later');
       console.log('fetchData error', error);
     });
   }
 
+  getSortOrder(prop) {
+    return (a, b) => {
+      if (a[prop] > b[prop]) {
+        return 1;
+      } else if (a[prop] < b[prop]) {
+        return -1;
+      }
+      return 0;
+    };
+  }
   redirectToToc() {
     let contentId;
     this.getTimeTable(this.teacherProfile.sessionId).subscribe((periods: any) => {
