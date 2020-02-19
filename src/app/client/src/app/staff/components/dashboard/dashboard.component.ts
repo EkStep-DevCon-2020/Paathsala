@@ -161,11 +161,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
       }
     }).pipe(map((res: any) => {
-      if (res && res.result && res.result.attendenceList) {
-        return res && res.result && res.result.attendenceList
-      } else {
-        return [];
-      }
+      return res || [];
     }));
   }
 
