@@ -77,9 +77,9 @@
     }
 
     .leaderboard-content-container {
-      overflow-y: auto;
-      height: calc(100vh - 228px);
-      padding-right: 0.5rem;
+      // overflow-y: auto;
+      // height: calc(100vh - 228px);
+      // padding-right: 0.5rem;
 
       .leaderboard-content {
         margin: 0.5rem 0;
@@ -93,7 +93,7 @@
         }
 
         .card-leaderboard-content.third {
-          background: #38CDEC;
+          background: #1d6dbf;
         }
 
         .card-leaderboard-content {
@@ -150,10 +150,10 @@
     }
 
     .time-table-content-container {
-      overflow-x: hidden;
-      overflow-y: auto;
-      height: calc(100vh - 228px);
-      padding-right: 0.5rem;
+      // overflow-x: hidden;
+      // overflow-y: auto;
+      // height: calc(100vh - 228px);
+      // padding-right: 0.5rem;
 
       .time-table-content {
         display: flex;

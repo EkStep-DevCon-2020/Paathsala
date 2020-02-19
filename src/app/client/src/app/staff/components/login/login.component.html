@@ -51,7 +51,7 @@
 
 <div id="myModal" class="login-modal" *ngIf="openErrorModal || openSuccessModal">
     <div class="modal-content">
-        <div class="modal-body">
+        <div class="modal-body m-32">
             <div class="status-content" *ngIf="openSuccessModal">
                 <img src="./../../../../../assets/images/check.gif" alt="checked">
                 <div class="status-info">
@@ -63,7 +63,7 @@
                         Please confirm and continue.
                     </div>
                 </div>
-                <a class="sb-btn sb-btn-secondary sb-btn-normal"
+                <a class="sb-btn sb-btn-primary sb-btn-normal" style="color:white;"
                     (click)="navigate();openErrorModal = false;">CONFIRM</a>
             </div>
             <!-- failed message modal content -->

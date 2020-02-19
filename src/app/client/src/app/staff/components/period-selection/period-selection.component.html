@@ -8,9 +8,9 @@
     <div class="page-title">Staff Room</div>
   </section>
 
-  <div class="ui stackable grid">
-    <div class="three wide column">
-      <section class="staff-grid-item">
+  <div class="ui stackable grid m-0" style="padding-top:80px;">
+    <div class="three wide column p-0">
+      <section class="staff-grid-item" style="background: none;height:100%;">
         <div class="section-in-area">
           <div class="img-container">
             <img [src]="configService.userInfo?.photo || profileInfo.avatar"
@@ -21,7 +21,8 @@
             <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
                  {{sub}}
              </span> -->
-            Subjects: <span class="subject-pill" *ngIf="profileInfo.subject">
+            <span class="sb-h6">Subjects: </span> 
+            <span class="subject-pill" *ngIf="profileInfo.subject">
               {{profileInfo.subject}}
             </span>
           </div>
@@ -29,9 +30,9 @@
             <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
                  {{sub}}
              </span> -->
-            Class: <span class="subject-pill" *ngIf="profileInfo.subject">
-              Class - 08
-            </span> <span class="subject-pill" *ngIf="profileInfo.subject">
+            <span class="sb-h6">Class:</span>  
+            <span class="subject-pill" *ngIf="profileInfo.subject">
+              Class - 08</span> <span class="subject-pill" *ngIf="profileInfo.subject">
               Class - 09
             </span>
           </div>
@@ -39,7 +40,7 @@
             <!-- <span class="subject-pill" *ngFor="let sub of teacher?.subjects">
                  {{sub}}
              </span> -->
-            Medium: <span class="subject-pill" *ngIf="profileInfo.subject">
+            <span class="sb-h6">Medium:</span> <span class="subject-pill" *ngIf="profileInfo.subject">
               Hindi
             </span> <span class="subject-pill" *ngIf="profileInfo.subject">
               English
@@ -48,7 +49,7 @@
         </div>
       </section>
     </div>
-    <div class="nine wide column sb-bg-color-white pl-0">
+    <div class="nine wide column sb-bg-color-white p-0">
       <section class="p-16">
         <full-calendar #calendar defaultView="timeGridWeek" maxTime="16:00:00" minTime="09:00:00" [header]="{
           left: 'prev,next today',

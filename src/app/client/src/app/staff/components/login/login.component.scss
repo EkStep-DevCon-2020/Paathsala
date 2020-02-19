@@ -79,8 +79,10 @@
             width: 100%;
             width: 250px;
             height: 250px;
-            border: 1px solid #666666;
+            // border: 1px solid #666666;
             background: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 7px 1px rgba(45, 45, 45, 0.5);
           }
           .input-container{
             display: flex;
@@ -88,6 +90,7 @@
             margin: 1.5em 0;
             height: 2.5em;
             width: 100%;
+            border-radius: 8px;
             .icon::before{
               content: "\2192";
               font-size: 1.5em;
@@ -106,8 +109,8 @@
               width: 80%;
               padding: 0 0.6em;
               outline: none;
-              font-size: 1.2em;
-              line-height: 2.6em;
+              font-size: 1em;
+              line-height: 2.6em;border-radius: 4px;
               color: #575757;
               border: 1px solid #707070;
              }
@@ -135,7 +138,7 @@
 .login-modal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 6.25em; /* Location of the box */
+  // padding-top: 6.25em; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -143,6 +146,9 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* Modal Content */
 .modal-content {

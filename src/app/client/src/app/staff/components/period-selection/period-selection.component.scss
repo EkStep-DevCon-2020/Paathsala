@@ -19,7 +19,7 @@ body {
     // border: 0.0625rem solid rgba(255, 255, 255, 0.2);
     color: var(--white);
     border-radius: 0.125rem;
-    background: rgba(88, 255, 119, 0.1);
+    // background: rgba(88, 255, 119, 0.1);
     position: relative;
     cursor: pointer;
     transition: background 0.2s ease-in-out, color 0.28s ease-in,
@@ -94,7 +94,7 @@ body {
           }
         }
         h4 {
-          color: var(--white);
+          color: var(--black);
         }
         .subjects-section {
           .subject-pill {
