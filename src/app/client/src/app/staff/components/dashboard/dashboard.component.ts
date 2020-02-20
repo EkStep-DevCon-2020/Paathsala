@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     console.log('===user loggedin event=====', this.configService.userInfo, this.configService.teacherInfo);
     if (!this.activatedRoute.snapshot.params.sessionId) {
       console.log('---------------------');
-      this.populateData(this.configService.userInfo.code);
+      this.getProfile(this.configService.userInfo.code);
     }
   }
   ngOnInit() {
@@ -69,7 +69,28 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       return;
     }
   }
-
+  getProfile(qrCode){
+    const body = {
+      "request": {
+          "filters": {
+            "objectType":"Teacher",
+            "identifier": ["T1", "T2","T3", "T4", "T5","T6"],
+            "status": []
+          }
+      }
+  };
+    this.dataService.post('https://devcon.sunbirded.org/action/composite/v3/search', body, { headers: {'Content-Type': 'application/json'}})
+    .subscribe((data: any) => {
+        console.log(data);
+        this.dataService.setTeacherData(data.result.Teacher);
+        // this.teacherList = data.result.Teacher;
+        this.populateData(qrCode)
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   ngAfterViewInit(): void {
     if (this.activatedRoute.snapshot.params.sessionId) {
       console.log(this.activatedRoute.snapshot.params.sessionId);
@@ -96,7 +117,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       };
       this.classname = `${ClassMap[sessionIdMap.class]}`;
     } else if(this.configService.userInfo && this.configService.userInfo.code) {
-      this.populateData(this.configService.userInfo.code);
+      this.getProfile(this.configService.userInfo.code);
     }
   }
   completeTopic(done){
@@ -128,9 +149,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               subject: element.subject,
               topicId: element.topicId,
               topicName: element.topicName,
-              identifier: element.identifier,
-              name: this.configService.teacherInfo.name,
-              avatar: this.configService.teacherInfo.avatar
+              identifier: element.identifier
             };
           }
         });
