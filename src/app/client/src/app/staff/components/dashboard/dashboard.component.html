@@ -22,7 +22,10 @@
             <div class="fsmall">Medium</div>
           </div>
         </div>
-        <div class="header-btn"><button type="button" class="start-btn" (click)="redirectToToc()">Lets Start</button></div>
+        <div class="header-btn">
+          <button *ngIf="!configService.contentCompleted" type="button" class="start-btn" (click)="redirectToToc()">Lets Start</button>
+          <button *ngIf="configService.contentCompleted" type="button" class="start-btn" (click)="redirectToToc()">Complete Topic</button>
+        </div>
       </div>
     </div>
     <!-- <div class="nav">
@@ -145,3 +148,22 @@
 
   </div>
 </div>
+<sui-modal *ngIf="showCompletionPopUp" [mustScroll]="true" [isClosable]="true" [transitionDuration]="0" [size]="'normal'"
+class="sb-modal" appBodyScroll (dismissed)="showCompletionPopUp = !showCompletionPopUp;" #modal>
+<div class="sb-modal-header">
+  Topic Completed?
+</div>
+<div class="sb-modal-content">
+  Please click yes to mark the topic as done.
+</div>
+<div class="sb-modal-actions">
+  <button class="sb-btn sb-btn-normal sb-btn-primary"
+    (click)="completeTopic(yes);showCompletionPopUp = !showCompletionPopUp;">
+    Yes
+  </button>
+  <button class="sb-btn sb-btn-normal sb-btn-outline-primary"
+    (click)="completeTopic(no); showCompletionPopUp = !showCompletionPopUp;">
+    No
+  </button>
+</div>
+</sui-modal>

@@ -13,10 +13,12 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { TelemetryService } from './service/telemetry.service';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuiAccordionModule, SuiModalModule, SuiDimmerModule } from 'ng2-semantic-ui';
 
 @NgModule({
   declarations: [ProfileSelectionComponent, PeriodSelectionComponent, DashboardComponent, SideMenuComponent, LoginComponent],
   imports: [
+    SuiModalModule,
     FormsModule,
     CommonModule,
     HttpClientModule,

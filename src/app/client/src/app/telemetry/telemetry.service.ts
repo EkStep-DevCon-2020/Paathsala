@@ -55,4 +55,43 @@ export class TelemetryService {
     });
 
   }
+  public topicComplete(data, profileId, teacherId, teacherName) {
+    const topicCompleteEvent: any = {
+      "eid": "DC_SYLLABUS",
+      "ets": (new Date()).getTime(),
+      "profileId": profileId,
+      "teacherId": teacherId,
+      "teacherName": teacherName,
+      "stallId": "STA2",
+      "ideaId": "IDE9",
+      "topicId": data.topicId,
+      "topicName": data.topicName,
+      "subject": data.subject,
+      "grade": data.class,
+      "edata": {
+          "syllabus": data.done || true
+      }
+  }
+  topicCompleteEvent.mid = topicCompleteEvent.eid + ':' + Md5(JSON.stringify(topicCompleteEvent));
+  console.log("=========topicCompleteEvent========", topicCompleteEvent);
+    const request = {
+      url: `${this.baseUrl}content/data/v1/telemetry`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        id: 'api.sunbird.telemetry',
+        ver: '3.0',
+        params: {
+          msgid: UUID.UUID()
+        },
+        ets: (new Date()).getTime(),
+        events: [topicCompleteEvent]
+      }
+    };
+
+    this.http.post(request.url, request.body, { headers: request.headers } ).pipe().subscribe((res) => {
+      console.log('response ', res);
+    });
+  }
 }
