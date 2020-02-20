@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../service/data.service';
+import {TelemetryService} from '../../../telemetry/telemetry.service';
 import {Router} from '@angular/router';
 import {SLIDE_UP_DOWN, FLYIN, APPEAR_DOWN, CARD_ANIMATION, APPEAR_SIDE} from '../../../theme/app-animations';
 import { ConfigService } from '../../../config/config.service';
@@ -17,7 +18,8 @@ export class ProfileSelectionComponent implements OnInit {
   public defaultProfileImg = './assets/images/default-profile.png';
   public teacherList;
 
-  constructor(private dataService: DataService, public router: Router, public configService: ConfigService) {
+  constructor(private dataService: DataService, public router: Router, public configService: ConfigService,
+              private telemetryService: TelemetryService) {
     if(!this.configService.userInfo){
       this.router.navigate(['staff']);
     }
@@ -46,6 +48,8 @@ export class ProfileSelectionComponent implements OnInit {
   }
 
   public toogleSelected(teacher) {
+    console.log(this.configService.userInfo, teacher);
+    this.telemetryService.dcattendence(this.configService.userInfo, teacher);
     this.router.navigate(['staff/period/selection/' + teacher.identifier]);
   }
 }
