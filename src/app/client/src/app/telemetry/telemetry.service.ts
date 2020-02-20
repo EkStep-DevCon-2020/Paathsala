@@ -94,4 +94,45 @@ export class TelemetryService {
       console.log('response ', res);
     });
   }
+
+
+  public dcattendence(user, teacher) {
+    const visitTelemetry  = {
+      'eid': 'DC_ATTENDENCE',
+      'mid': UUID.UUID(),
+      'ets': 1.582108725133E12,
+      'profileId': user.osid,
+      'teacherId': teacher.identifier,
+      'stallId': 'STA2',
+      'ideaId': 'IDE9',
+      'sid': '08021717',
+      'edata': {
+        'profileUrl': teacher.avatar,
+        'name': teacher.name,
+        'osid': user.osid
+      },
+      'syncts': 1582108886755,
+      '@timestamp': '2020-02-19T10:41:26.755Z'
+    };
+
+    const request = {
+      url: `${this.baseUrl}content/data/v1/telemetry`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        id: 'api.sunbird.telemetry',
+        ver: '3.0',
+        params: {
+          msgid: UUID.UUID()
+        },
+        ets: (new Date()).getTime(),
+        events: [visitTelemetry]
+      }
+    };
+
+    this.http.post(request.url, request.body, { headers: request.headers } ).pipe().subscribe((res) => {
+      console.log('response ', res);
+    });
+  }
 }
