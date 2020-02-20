@@ -7,6 +7,7 @@ import {ToasterService} from '@sunbird/shared';
 import {forkJoin, observable} from 'rxjs';
 import {ConfigService} from '../../../config/config.service';
 import {trigger, state, style, animate, transition} from '@angular/animations';
+import { TelemetryService } from '../../../telemetry/telemetry.service';
 
 const ClassMap =  {
   '01' : 'Class 1',
@@ -43,8 +44,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   state = 'default';
   state2 = 'default';
   public classname: any;
+  showCompletionPopUp = false;
   constructor(private dataService: DataService, public activatedRoute: ActivatedRoute, public router: Router,
-              public toasterService: ToasterService, public configService: ConfigService) {
+              public toasterService: ToasterService, public configService: ConfigService, public telemetryServcie: TelemetryService) {
                 if (this.configService.userInfo) {
                   this.loggedIn = true;
                   console.log('===user loggedin in constructor=====', this.configService.userInfo, this.configService.teacherInfo);
@@ -79,6 +81,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.teacherProfile = {
           sessionId: this.activatedRoute.snapshot.params.sessionId,
           subject: element.subject,
+          topicId: element.topicId,
+          topicName: element.topicName,
+          identifier: element.identifier,
           name: this.configService.teacherInfo.name,
           avatar: this.configService.teacherInfo.avatar
         };
@@ -90,9 +95,24 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         class: sessionIdArray[0]
       };
       this.classname = `${ClassMap[sessionIdMap.class]}`;
+    } else if(this.configService.userInfo && this.configService.userInfo.code) {
+      this.populateData(this.configService.userInfo.code);
     }
   }
-
+  completeTopic(done){
+    console.log("Log topic complete event", this.teacherProfile, this.configService.userInfo);
+    const sessionIdArray = this.teacherProfile.sessionId.match(/.{1,2}/g);
+    const sessionIdMap = {
+      class: sessionIdArray[0],
+      month: parseInt(sessionIdArray[1]),
+      day: parseInt(sessionIdArray[2]),
+      hour: parseInt(sessionIdArray[3])
+    }
+    this.telemetryServcie.topicComplete(
+    {topicId: this.teacherProfile.topicId, topicName: this.teacherProfile.topicName, subject: this.teacherProfile.subject, class: ClassMap[sessionIdMap.class], done}, 
+    this.configService.userInfo.osid,
+    this.teacherProfile.teacherId, this.teacherProfile.teacherName);
+  }
   populateData(qrCode) {
     this.fetchData(qrCode).subscribe(data => {
       console.log(data);
@@ -102,9 +122,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.timeTable = periods;
         periods.forEach(element => {
           if (element.sessionId === this.teacherProfile.sessionId) {
+            console.log("====found data========", element);
             this.teacherProfile = {
               sessionId: this.teacherProfile.sessionId,
               subject: element.subject,
+              topicId: element.topicId,
+              topicName: element.topicName,
+              identifier: element.identifier,
               name: this.configService.teacherInfo.name,
               avatar: this.configService.teacherInfo.avatar
             };
@@ -227,6 +251,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     };
   }
   redirectToToc() {
+    // this.teacherProfile.sessionId
+    if(this.configService.contentCompleted){
+      console.log("show popup");
+      this.showCompletionPopUp = true;
+      return;
+    }
     let contentId;
     this.getTimeTable(this.teacherProfile.sessionId).subscribe((periods: any) => {
       periods.forEach(period => {
@@ -234,7 +264,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           contentId = period.textBookId;
         }
       });
-      this.router.navigate(['play/collection/' + contentId]);
+      this.router.navigate(['play/collection/' + contentId]).then(data => {
+        this.configService.contentCompleted = true;
+      });
     }, error => {
       this.toasterService.error('Error Loading data Please try again Later');
       console.log('timetable fetching', error);

@@ -39,11 +39,13 @@ export class PeriodSelectionComponent implements OnInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
   calendarEvents: EventInput[] = [];
-  profileInfo = {};
+  profileInfo: any = {};
+  topicDetails: any = {};
   constructor(public router: Router, public activatedRoute: ActivatedRoute, private dataService: DataService, public configService: ConfigService){ 
     if(!this.configService.userInfo){
       this.router.navigate(['staff']);
     }
+    console.log("====", this.configService.userInfo);
   }
   ngOnInit() {
     const today = new Date();
@@ -65,7 +67,9 @@ export class PeriodSelectionComponent implements OnInit {
           start: new Date(year, sessionIdMap.month - 1, sessionIdMap.day, sessionIdMap.hour),
           end: new Date(year, sessionIdMap.month - 1, sessionIdMap.day, sessionIdMap.hour + 1),
           id: row.textBookId, 
-          sessionId: row.sessionId
+          sessionId: row.sessionId,
+          topicId: row.topicId,
+          topicName: row.topicName
         }
         if(event.start.getTime() < today.getTime()){
           event.backgroundColor = completedClassColor;
@@ -95,11 +99,48 @@ export class PeriodSelectionComponent implements OnInit {
   }
   handleEventClick(arg) {
     this.configService.sessionId = arg.event.extendedProps.sessionId;
+    this.topicDetails = {
+      topicId: arg.event.extendedProps.topicId,
+      topicName: arg.event.extendedProps.topicName
+    }
     console.log(arg.event.backgroundColor, arg.event);
     if(arg.event.backgroundColor === completedClassColor){
       this.router.navigate(['staff/dashboard/' + this.configService.sessionId]);
     } else {
       this.router.navigate(['play/collection/' + arg.event.id]);
+      this.saveSessionWithUser();
     }
+  }
+  saveSessionWithUser(){
+    const body = {
+      "request": {
+        "teacher": {
+          "userId": this.configService.userInfo.code,
+          "userDetails": {
+            teacherId: this.configService.teacherInfo.identifier,
+            subject: this.configService.teacherInfo.subject,
+            name: this.configService.userInfo.name,
+            avatar: this.configService.userInfo.photo,
+            sessionId: this.configService.sessionId,
+            teacherName: this.configService.teacherInfo.name,
+            topicId: this.topicDetails.topicId,
+            topicName: this.topicDetails.topicName
+          }
+        }
+      }
+    };
+    this.dataService.post('https://devcon.sunbirded.org/api/teacher/v3/user/profile', body, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
+      }
+    })
+    .subscribe((data: any) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

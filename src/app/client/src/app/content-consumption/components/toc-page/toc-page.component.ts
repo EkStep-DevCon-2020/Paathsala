@@ -94,40 +94,11 @@ export class TocPageComponent implements OnInit, OnDestroy {
     this.contentType = _.get(this.activatedRoute, 'snapshot.queryParams.contentType');
     this.dialCode = _.get(this.activatedRoute, 'snapshot.queryParams.dialCode');
     this.getContent();
-    this.saveSessionWithUser();
     this.router.events
     .pipe(filter((event) => event instanceof NavigationStart), takeUntil(this.unsubscribe$))
     .subscribe(x => {this.setPageExitTelemtry(); });
   }
-  saveSessionWithUser(){
-    const body = {
-      "request": {
-        "teacher": {
-          "userId": this.configService.userInfo.code,
-          "userDetails": {
-            teacherId: this.configService.teacherInfo.identifier,
-            subject: this.configService.teacherInfo.subject,
-            name: this.configService.userInfo.name,
-            avatar: this.configService.userInfo.photo,
-            sessionId: this.configService.sessionId,
-          }
-        }
-      }
-    };
-    this.dataService.post('https://devcon.sunbirded.org/api/teacher/v3/user/profile', body, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyZWU4YTgxNDNiZWE0NDU4YjQxMjcyNTU5ZDBhNTczMiJ9.7m4mIUaiPwh_o9cvJuyZuGrOdkfh0Nm0E_25Cl21kxE'
-      }
-    })
-    .subscribe((data: any) => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+
   checkDownloadStatus(downloadListdata) {
     this.collectionData = this.playerService.updateDownloadStatus(downloadListdata, this.collectionData);
   }

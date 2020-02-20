@@ -14,6 +14,7 @@ export class ConfigService {
   baseUrl = 'https://devcon.sunbirded.org/api/';
   http: HttpClient;
   httpOptions = {};
+  contentCompleted = false;
   constructor(http: HttpClient) {
     this.http = http;
   }
