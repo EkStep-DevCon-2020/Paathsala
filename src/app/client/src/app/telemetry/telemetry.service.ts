@@ -98,7 +98,7 @@ export class TelemetryService {
 
   public dcattendence(user, teacher) {
     const visitTelemetry  = {
-      'eid': 'DC_ATTENDENCE',
+      'eid': 'DC_ATTENDANCE',
       'mid': UUID.UUID(),
       'ets': 1.582108725133E12,
       'profileId': user.osid,
@@ -106,11 +106,8 @@ export class TelemetryService {
       'stallId': 'STA2',
       'ideaId': 'IDE9',
       'sid': '08021717',
-      'edata': {
-        'profileUrl': teacher.avatar,
-        'name': teacher.name,
-        'osid': user.osid
-      },
+      'teacherName': teacher.name,
+      'edata': {},
       'syncts': 1582108886755,
       '@timestamp': '2020-02-19T10:41:26.755Z'
     };
